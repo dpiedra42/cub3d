@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/15 16:05:18 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/15 16:31:37 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ void    raycast(t_pos pos, t_map map, t_ray ray, t_data data, t_draw draw)
 	{
 		start_raycast(pos, map, ray, x);
 		find_step(ray, pos, map);
-		hit_wall(ray, pos, map);
+		wall_hit(ray, pos, map);
 		wall_dist(map, ray, pos);
-        line_height(ray, draw);
-        wall_color(draw, map);
-        draw_ine(draw, data, pos, x);
+    line_height(ray, draw);
+    wall_color(draw, map);
+    draw_line(draw, data, pos, x);
 		x++;
 	}
 }

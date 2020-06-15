@@ -6,13 +6,13 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/15 15:58:29 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/15 16:12:52 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		main(int ac, char **av)
+int		main(void)
 {
 	t_pos	pos;
 	t_map	map;
@@ -36,3 +36,5 @@ int		main(int ac, char **av)
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }
+
+// gcc test.c -o test.a -Lminilibx_og  -lmlx -framework OpenGL -framework AppKit
