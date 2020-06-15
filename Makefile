@@ -1,48 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/06/15 16:25:44 by deannapiedr       #+#    #+#              #
-#    Updated: 2020/06/15 16:46:16 by deannapiedr      ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	= cub3D
 
-NAME	=	cub3d
+RM		= rm -f
 
-RM		=	rm -f
+CFLAGS	= -Wall -Wextra -Werror
 
-CFLAGS	= 	-Wall -Wextra -Werror
+GCC		= gcc
 
-CC		=	gcc
+INCLUDEH	= -I minilibx
 
-HEADER	=	-I minilibx
+MLX_DIR		=	minilibx_opengl
 
-SRCS	=	main.c raycast.c init_struct.c drawing.c
+SRCS	=	main.c ft_raycast.c	ft_init_struct.c ft_drawing.c 
 
-OBJ		=	$(SRCS:.c=.o)
+OBJS	= $(SRCS:.c=.o)
 
-all		:	$(NAME)
+all:	$(NAME)
 
-$(NAME)	:	$(OBJ)
-			cd minilibx_og && $(MAKE)
-			cp minilibx_og/libmlx.a $(NAME)
-			ar -rcs $(NAME) $(OBJ)
-			gcc $(FLAGS) -o $(NAME) $(OBJS) -L libft -lft -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+$(NAME):	$(OBJS)
+	$(MAKE) -C minilibx_opengl
+	gcc $(CFLAGS) -o $(NAME) $(OBJS) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
-.PHONY	:	clean fclean re
 
-clean	:
-			$(RM) $(OBJ)
-			cd minilibx_og && $(MAKE) clean
+.PHONY:	clean fclean re bonus bench bclean
 
-fclean	:	clean
-			$(RM) $(NAME)
-			cd minilibx_og && $(MAKE) fclean
+clean:
+	rm -f $(OBJS)
 
-re		:	fclean all
+fclean: clean
+	rm -f $(NAME)
 
-%.o		:	%.c
-			$(CC) $(FLAGS) $(HEADER) -c $<  -o $(<:.c=.o)
+re: fclean all
+
+%.o: %.c
+	$(GCC) $(CFLAGS) $(INCLUDEH) -c $<  -o $(<:.c=.o)
