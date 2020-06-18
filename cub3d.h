@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/15 17:24:53 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/18 15:36:28 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,25 @@ typedef struct    s_data
     t_img         img;
 }                 t_data;
 
+typedef struct		s_all
+{
+	t_pos			*pos;
+	t_map			*map;
+	t_draw			*draw;
+	t_ray			*ray;
+	t_data			*data;
+}					t_all;
+
+
 t_pos   start_pos(t_pos pos);
 t_map   start_map(t_map map);
-void    raycast(t_pos pos, t_map map, t_ray ray, t_data data, t_draw draw);
-void	start_raycast(t_pos pos, t_map map, t_ray ray, int x);
-void	find_step(t_ray ray, t_pos pos, t_map map);
-void	wall_hit(t_ray ray, t_pos pos, t_map map);
-void	wall_dist(t_map map, t_ray ray, t_pos pos);
-void    raycast(t_pos pos, t_map map, t_ray ray, t_data data, t_draw draw);
-void    draw_line(t_draw draw, t_data data, t_pos pos, int x);
-void    wall_color(t_draw draw, t_map map);
-void    line_height(t_ray ray, t_draw draw);
+void    raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw);
+void	start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
+void	find_step(t_ray *ray, t_pos *pos, t_map *map);
+void	wall_hit(t_ray *ray, t_pos *pos, t_map *map);
+void	wall_dist(t_map *map, t_ray *ray, t_pos *pos);
+void    draw_line(t_draw *draw, t_data *data, t_pos *pos, int x);
+void    wall_color(t_draw *draw, t_map *map);
+void    line_height(t_ray *ray, t_draw *draw);
 
 #endif
