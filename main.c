@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/18 16:49:21 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/18 16:50:54 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	start_window(t_all *all)
 {
-	start_pos(all->pos, all->map);
+	start_struct(all->pos, all->map);
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
     	return (EXIT_FAILURE);
     if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,

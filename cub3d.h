@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/18 16:49:13 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/18 16:50:42 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ typedef struct	s_all
 	t_data			*data;
 }				t_all;
 
-void	start_pos(t_pos *pos, t_map *map);
+void	start_struct(t_pos *pos, t_map *map);
 void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw);
 void	start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
 void	find_step(t_ray *ray, t_pos *pos, t_map *map);

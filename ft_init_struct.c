@@ -6,13 +6,13 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 16:49:37 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/18 16:34:59 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/18 16:50:51 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	start_pos(t_pos *pos, t_map *map)
+void	start_struct(t_pos *pos, t_map *map)
 {
     pos->x			=	2;
 	pos->y			=	3;
