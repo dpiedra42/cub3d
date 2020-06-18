@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/18 15:35:41 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/18 15:40:43 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	find_step(t_ray *ray, t_pos *pos, t_map *map)
       }
 }
 
-void	wall_hit(t_ray *ray, t_pos *pos, t_map *map)
+void	wall_hit(t_ray *ray, t_map *map)
 {
 	int hit;
 
@@ -88,7 +88,7 @@ void    raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw)
 	{
 		start_raycast(pos, map, ray, x);
 		find_step(ray, pos, map);
-		wall_hit(ray, pos, map);
+		wall_hit(ray, map);
 		wall_dist(map, ray, pos);
     line_height(ray, draw);
     wall_color(draw, map);
