@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 17:16:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/18 16:42:32 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/21 17:26:21 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	draw_line(t_draw *draw, t_data *data, t_pos *pos, int x)
 	int i;
 
 	i = -1;
-	while (++i < draw->draw_start)
-	{
+	while (++i < draw->start)
 		*(data->img.data + x + i * data->img.sizel / 4) = draw->color;
-	}
 	while (i < pos->height)
 		*(data->img.data + x + i++ * data->img.sizel / 4) = draw->color;
 }
@@ -28,18 +26,18 @@ void	draw_line(t_draw *draw, t_data *data, t_pos *pos, int x)
 void	wall_color(t_draw *draw, t_map *map)
 {
 	if (worldmap[map->x][map->y] >= 0)
-		draw->color = 0xFABCFA;
+		draw->color = 0xC864BD; //pink/purple
 	if (map->side == 1) 
 		draw->color = draw->color / 2;
 }
 
-void	line_height(t_ray *ray, t_draw *draw)
+void	line_height(t_ray *ray, t_draw *draw, t_pos *pos)
 {
-	draw->line_height = draw->h / (int)ray->wall_dist;
-	draw->draw_start = (draw->line_height * -1) / 2 + draw->h / 2;
-	if (draw->draw_start < 0)
-		draw->draw_start = 0;
-	draw->draw_end = draw->line_height / 2 + draw->h / 2;
-	if (draw->draw_end >= draw->h)
-		draw->draw_end = draw->h - 1;
+	draw->line_height = pos->height / (int)ray->wall_dist;
+	draw->start = (draw->line_height * -1) / 2 + pos->height / 2;
+	if (draw->start < 0)
+		draw->start = 0;
+	draw->end = draw->line_height / 2 + pos->height / 2;
+	if (draw->end >= pos->height)
+		draw->end = pos->height - 1;
 }

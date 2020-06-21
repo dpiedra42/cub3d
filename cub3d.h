@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/18 16:50:42 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/21 17:36:07 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,28 @@
 # include <fcntl.h>
 # include "./minilibx_og/mlx.h"
 
-static int worldmap[6][6] = {{ 1, 1, 1, 1, 1, 1 },
-							{ 1, 0, 0, 0, 0, 1 },
-							{ 1, 0, 0, 0, 0, 1 },
-							{ 1, 0, 0, 0, 0, 1 },
-							{ 1, 0, 0, 0, 0, 1 },
-							{ 1, 1, 1, 1, 1, 1 }};
+static int worldmap[20][20] = {
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+};
 
 typedef struct	s_pos
 {
@@ -53,9 +69,8 @@ typedef struct	s_map
 typedef struct	s_draw
 {
 	int				line_height;
-    int				draw_start;
-    int				draw_end;
-	int				h;
+    int				start;
+    int				end;
 	int				color;
 }				t_draw;
 
@@ -95,6 +110,7 @@ typedef struct	s_all
 	t_data			*data;
 }				t_all;
 
+int		start_window(t_all *all);
 void	start_struct(t_pos *pos, t_map *map);
 void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw);
 void	start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
@@ -103,6 +119,6 @@ void	wall_hit(t_ray *ray, t_map *map);
 void	wall_dist(t_map *map, t_ray *ray, t_pos *pos);
 void	draw_line(t_draw *draw, t_data *data, t_pos *pos, int x);
 void	wall_color(t_draw *draw, t_map *map);
-void	line_height(t_ray *ray, t_draw *draw);
+void	line_height(t_ray *ray, t_draw *draw, t_pos *pos);
 
 #endif
