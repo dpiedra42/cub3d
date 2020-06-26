@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/21 17:36:07 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/26 15:22:17 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <math.h>
 # include <fcntl.h>
 # include "./minilibx_og/mlx.h"
+
+# define ESC 53
+# define W 13
+# define A 0
+# define S 1
+# define D 2
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
 
 static int worldmap[20][20] = {
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -120,5 +130,7 @@ void	wall_dist(t_map *map, t_ray *ray, t_pos *pos);
 void	draw_line(t_draw *draw, t_data *data, t_pos *pos, int x);
 void	wall_color(t_draw *draw, t_map *map);
 void	line_height(t_ray *ray, t_draw *draw, t_pos *pos);
+int		ft_keypress(int key, t_all *all);
+void	ft_rotate(int s, t_map *map, t_pos *pos);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/21 17:24:43 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/25 18:14:18 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	start_window(t_all *all)
 	raycast(all->pos, all->map, all->ray, all->data, all->draw);
 	mlx_put_image_to_window(all->data->mlx_ptr, all->data->mlx_win,
 							all->data->img.ptr, 0, 0);
+	mlx_hook(all->data->mlx_win, 2, 0, ft_keypress, all);
 	mlx_loop(all->data->mlx_ptr);
 	return (1);
 }
