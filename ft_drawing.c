@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 17:16:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/23 18:20:40 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/26 15:45:19 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_line(t_draw *draw, t_data *data, t_pos *pos, int x)
 	i = -1;
 	while (++i < draw->start)
 		*(data->img.data + x + i * data->img.sizel / 4) = 0x96B2F2;
-	while (i < draw->end)
+	while (i <= draw->end)
 		*(data->img.data + x + i++ * data->img.sizel / 4) = draw->color;
 	while (i < pos->height)
 		*(data->img.data + x + i++ * data->img.sizel / 4) = 0xCE97FE;

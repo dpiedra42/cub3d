@@ -6,11 +6,19 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/26 15:24:07 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/26 16:11:03 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int print_game(t_all *all)
+{
+	raycast(all->pos, all->map, all->ray, all->data, all->draw);
+	mlx_put_image_to_window(all->data->mlx_ptr, all->data->mlx_win,
+							all->data->img.ptr, 0, 0);
+	return (1);
+}
 
 int	start_window(t_all *all)
 {
@@ -24,10 +32,8 @@ int	start_window(t_all *all)
 										all->pos->height);
 	all->data->img.data = (int *)mlx_get_data_addr(all->data->img.ptr, 
 			&(all->data->img.b), &(all->data->img.sizel), &(all->data->img.endi));
-	raycast(all->pos, all->map, all->ray, all->data, all->draw);
-	mlx_put_image_to_window(all->data->mlx_ptr, all->data->mlx_win,
-							all->data->img.ptr, 0, 0);
 	mlx_hook(all->data->mlx_win, 2, 0, ft_keypress, all);
+	mlx_loop_hook(all->data->mlx_ptr, print_game, all);
 	mlx_loop(all->data->mlx_ptr);
 	return (1);
 }

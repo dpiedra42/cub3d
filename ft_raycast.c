@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/23 18:20:47 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/06/26 15:45:45 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	wall_hit(t_ray *ray, t_map *map)
 			map->y += map->step_y;
 			map->side = 1;
 		}
-		if (worldmap[map->x][map->y] > 0) 
+		if (worldmap[map->x][map->y] == 1) 
 			hit = 1;
 	}
 }
