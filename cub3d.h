@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/27 17:30:50 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/01 16:11:43 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ static int worldmap[20][20] = {
 {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 };
+
+typedef struct	s_text
+{
+	void		*pink;
+}				t_text;
 
 typedef struct	s_pos
 {
@@ -113,6 +118,7 @@ typedef struct	s_data
 
 typedef struct	s_all
 {
+	t_text			*text;
 	t_pos			*pos;
 	t_map			*map;
 	t_draw			*draw;

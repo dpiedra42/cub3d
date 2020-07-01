@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/06/26 15:45:45 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/01 17:33:52 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ void	wall_hit(t_ray *ray, t_map *map)
 
 void	wall_dist(t_map *map, t_ray *ray, t_pos *pos)
 {
-	if (map->side == 0) 
-		ray->wall_dist = (map->x - pos->x + (1 - map->step_x) / 2) / ray->x;
-	else           
+	if (map->side == 1)
 		ray->wall_dist = (map->y - pos->y + (1 - map->step_y) / 2) / ray->y;
+	else
+		ray->wall_dist = (map->x - pos->x + (1 - map->step_x) / 2) / ray->x;	
 }
 
 void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw)
