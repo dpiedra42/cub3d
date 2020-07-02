@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/01 18:04:15 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 15:09:18 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int print_game(t_all *all)
 int	start_window(t_all *all)
 {
 	start_struct(all->pos, all->map);
+	start_texture(all->text, all->data);
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
     	return (EXIT_FAILURE);
     if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,

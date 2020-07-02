@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/01 16:11:43 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 15:11:31 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define DOWN 125
 # define LEFT 123
 # define RIGHT 124
+# define pinkpath "./textures/pinkwall.xpm"
 
 static int worldmap[20][20] = {
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -57,6 +58,12 @@ static int worldmap[20][20] = {
 typedef struct	s_text
 {
 	void		*pink;
+	int			*pink_data;
+	int			pink_height;
+	int			pink_width;
+	int			pink_sizel;
+	int			pink_b;
+	int			pink_endi;
 }				t_text;
 
 typedef struct	s_pos
