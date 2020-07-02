@@ -6,31 +6,33 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 17:16:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/01 18:02:57 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 15:55:18 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_line(t_draw *draw, t_data *data, t_pos *pos, int x)
+void	draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x)
 {
 	int i;
+	int		*texture;
+	double	step;
+	double	textpos;
 
 	i = -1;
+	step = 1.0 * text->pink_height / draw->line_height;
+	textpos = (draw->start - pos->height / 2 + draw->line_height / 2) * step;
+	texture = text->pink_data;
 	while (++i < draw->start)
 		*(data->img.data + x + i * data->img.sizel / 4) = 0x96B2F2;
 	while (i <= draw->end)
-		*(data->img.data + x + i++ * data->img.sizel / 4) = draw->color;
+	{
+		*(data->img.data + x + i++ * data->img.sizel / 4) = *(texture
+		+ text->textx + (int)textpos * text->pink_sizel / 4);
+		textpos += step;
+	}
 	while (i < pos->height)
 		*(data->img.data + x + i++ * data->img.sizel / 4) = 0xCE97FE;
-}
-
-void	wall_color(t_draw *draw, t_map *map)
-{
-	if (worldmap[map->x][map->y] >= 0)
-		draw->color = 0xF296C1; //pink/purple
-	if (map->side == 1)
-		draw->color = draw->color / 2;
 }
 
 void	line_height(t_ray *ray, t_draw *draw, t_pos *pos)
