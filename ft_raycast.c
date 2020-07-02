@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/02 15:55:30 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 16:15:17 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,17 +73,17 @@ void	wall_hit(t_ray *ray, t_map *map)
 
 void	wall_dist(t_map *map, t_ray *ray, t_pos *pos)
 {
-	if (map->side == 1)
-	{
-		ray->wall_dist = (map->y - pos->y + (1 - map->step_y) / 2) / ray->y;
-		ray->wallx = pos->x + ray->wall_dist * ray->x;
-	}
-	else
+	if (map->side == 0)
 	{
 		ray->wall_dist = (map->x - pos->x + (1 - map->step_x) / 2) / ray->x;
 		ray->wallx = pos->y + ray->wall_dist * ray->y;	
 	}
-	ray->wallx -= floor(ray->wallx);
+	else
+	{
+		ray->wall_dist = (map->y - pos->y + (1 - map->step_y) / 2) / ray->y;
+		ray->wallx = pos->x + ray->wall_dist * ray->x;
+	}
+	ray->wallx -= floor((ray->wallx));
 }
 
 void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw, t_text *text)
@@ -97,12 +97,12 @@ void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw, t_t
 		find_step(ray, pos, map);
 		wall_hit(ray, map);
 		wall_dist(map, ray, pos);
-		line_height(ray, draw, pos);
-		text->textx = ray->wallx * (text->pink_sizel / 4);
+		text->textx = (int)(ray->wallx * ((double)text->pink_width));
 		if (map->side == 0 && ray->x > 0)
-			text->textx = (text->pink_sizel / 4) - text->textx - 1;
+			text->textx = (text->pink_width) - text->textx - 1;
 		else if (map->side == 1 && ray->y < 0)
-			text->textx = (text->pink_sizel / 4) - text->textx - 1;
+			text->textx = (text->pink_width) - text->textx - 1;
+		line_height(ray, draw, pos);
 		draw_line(text, draw, data, pos, x);
 		x++;
 	}
