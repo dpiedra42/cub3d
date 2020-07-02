@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/02 16:26:03 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 17:34:22 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ void	start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
 void	find_step(t_ray *ray, t_pos *pos, t_map *map);
 void	wall_hit(t_ray *ray, t_map *map);
 void	wall_dist(t_map *map, t_ray *ray, t_pos *pos);
-int		draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x);
+void	draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x);
 void	line_height(t_ray *ray, t_draw *draw, t_pos *pos);
 
 #endif

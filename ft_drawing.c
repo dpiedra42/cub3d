@@ -6,13 +6,13 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 17:16:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/02 16:25:00 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 17:07:19 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x)
+void	draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x)
 {
 	int i;
 	double	step;
@@ -31,7 +31,6 @@ int		draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x)
 	}
 	while (i < pos->height)
 		*(data->img.data + x + i++ * data->img.sizel / 4) = 0xCE97FE;
-	return (1);
 }
 
 void	line_height(t_ray *ray, t_draw *draw, t_pos *pos)

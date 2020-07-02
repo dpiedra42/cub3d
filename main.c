@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/02 16:35:51 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 17:34:28 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int print_game(t_all *all)
 
 int	start_window(t_all *all)
 {
+	t_text	text;
+
+	all->text = &text;
 	start_struct(all->pos, all->map);
 	start_texture(all->text, all->data);
-	printf("%s\n", "hello");
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
     	return (EXIT_FAILURE);
     if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,
@@ -42,7 +44,6 @@ int	start_window(t_all *all)
 
 int	main(void)
 {
-	t_text	text;
 	t_pos	pos;
 	t_map	map;
 	t_data	data;
@@ -50,7 +51,6 @@ int	main(void)
 	t_draw	draw;
 	t_all	all;
 
-	all.text	=	&text;
 	all.data	=	&data;
 	all.pos		=	&pos;
 	all.map		=	&map;
