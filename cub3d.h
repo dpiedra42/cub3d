@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/02 16:01:57 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/02 16:26:03 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # define DOWN 125
 # define LEFT 123
 # define RIGHT 124
-# define pinkpath "./textures/pinkwall.xpm"
 
 static int worldmap[20][20] = {
 {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -135,7 +134,14 @@ typedef struct	s_all
 }				t_all;
 
 int		start_window(t_all *all);
+int		print_game(t_all *all);
 void	start_struct(t_pos *pos, t_map *map);
+void    start_texture(t_text *text, t_data *data);
+int		ft_keypress(int key, t_all *all);
+void	ft_rotate(int b, t_map *map, t_pos *pos);
+void	ft_forback(int b, t_pos *pos, t_map *map);
+void	ft_leftright(int b, t_pos *pos, t_map *map);
+void	ft_close(int b, t_data *data);
 void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw, t_text *text);
 void	start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
 void	find_step(t_ray *ray, t_pos *pos, t_map *map);
@@ -143,8 +149,5 @@ void	wall_hit(t_ray *ray, t_map *map);
 void	wall_dist(t_map *map, t_ray *ray, t_pos *pos);
 int		draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x);
 void	line_height(t_ray *ray, t_draw *draw, t_pos *pos);
-int		ft_keypress(int key, t_all *all);
-void	ft_rotate(int s, t_map *map, t_pos *pos);
-void    start_texture(t_text *text, t_data *data);
 
 #endif
