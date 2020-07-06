@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/02 17:34:28 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/06 13:13:20 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	start_window(t_all *all)
 
 	all->text = &text;
 	start_struct(all->pos, all->map);
-	start_texture(all->text, all->data);
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
     	return (EXIT_FAILURE);
+	start_texture(all->text, all->data);
     if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,
 		all->pos->height, "raycaster")) == NULL)
     	return (EXIT_FAILURE);
@@ -50,7 +50,9 @@ int	main(void)
 	t_ray	ray;
 	t_draw	draw;
 	t_all	all;
+	t_text  text;
 
+	all.text	=	&text;
 	all.data	=	&data;
 	all.pos		=	&pos;
 	all.map		=	&map;
