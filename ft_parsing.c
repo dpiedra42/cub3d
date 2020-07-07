@@ -6,11 +6,17 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/07 18:05:35 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/07 18:15:23 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_error(int len, char *str)
+{
+	write(2, str, len);
+	return (-1);
+}
 
 void	start_parse(t_all *all, char *cub)
 {
