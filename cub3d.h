@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/06 19:52:44 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/07 17:28:11 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,15 +133,16 @@ typedef struct	s_all
 	t_data			*data;
 }				t_all;
 
-int		start_window(t_all *all);
-int		print_game(t_all *all);
+int		start_window(t_all *all, int ac, char **av);
 void	start_struct(t_pos *pos, t_map *map);
+void    start_parse(t_all *all, char *cub);
 void    start_texture(t_text *text, t_data *data);
 int		ft_keypress(int key, t_all *all);
 void	ft_rotate(int b, t_map *map, t_pos *pos);
 void	ft_forback(int b, t_pos *pos, t_map *map);
 void	ft_leftright(int b, t_pos *pos, t_map *map);
 void	ft_close(int b, t_data *data);
+int		print_game(t_all *all);
 void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw, t_text *text);
 void	start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
 void	find_step(t_ray *ray, t_pos *pos, t_map *map);
