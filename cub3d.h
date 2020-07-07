@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/07 17:28:11 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/07 18:04:31 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct	s_all
 int		start_window(t_all *all, int ac, char **av);
 void	start_struct(t_pos *pos, t_map *map);
 void    start_parse(t_all *all, char *cub);
+int		ft_error(int len, char *str);
 void    start_texture(t_text *text, t_data *data);
 int		ft_keypress(int key, t_all *all);
 void	ft_rotate(int b, t_map *map, t_pos *pos);

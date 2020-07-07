@@ -1,30 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/07 18:05:35 by deannapiedr      ###   ########.fr       */
+/*   Created: 2020/07/07 18:01:31 by deannapiedr       #+#    #+#             */
+/*   Updated: 2020/07/07 18:04:50 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-
-void	start_parse(t_all *all, char *cub)
+int	ft_error(int len, char *str)
 {
-	char	*ptr;
-	int		fd;
-	int		result;
-
-	if ((fd = open(cub, O_RDONLY)) < 0)
-		ft_error(32, "Error : couldnt open file (FD)\n");
-	result = 1;
-	while (result)
-	{
-		result = get_next_line(fd, &ptr);
-		free(ptr);
-	}
-	close(fd);
+	write(2, str, len);
+	return (-1);
 }
