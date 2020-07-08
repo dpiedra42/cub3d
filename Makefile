@@ -12,7 +12,8 @@ INCLUDEH	=	-I minilibx
 
 MLX_DIR		=	minilibx_og
 
-SRCS		=	main.c ft_raycast.c ft_init_struct.c ft_drawing.c ft_keys.c ft_textures.c
+SRCS		=	main.c ft_raycast.c ft_init_struct.c ft_drawing.c ft_keys.c ft_textures.c \
+				ft_parsing.c ft_gnl.c ft_gnl_tools.c
 
 OBJS		=	$(SRCS:.c=.o)
 

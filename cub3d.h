@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/07 18:04:31 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/08 19:18:12 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct	s_map
 	int				step_x;
     int				step_y;
 	int				side;
+	char			**map;
+	char			**gnl;
 }				t_map;
 
 typedef struct	s_draw
@@ -137,6 +139,14 @@ int		start_window(t_all *all, int ac, char **av);
 void	start_struct(t_pos *pos, t_map *map);
 void    start_parse(t_all *all, char *cub);
 int		ft_error(int len, char *str);
+char	**make_lines(char **gnl, int fd);
+int		get_next_line(int fd, char **line);
+char	*del_line(char *s);
+int		check_new(char *str);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*get_line(char *s1);
+size_t	ft_strlen(const char *str);
+void	*ft_memmove(void *dst, const void *src, size_t len);
 void    start_texture(t_text *text, t_data *data);
 int		ft_keypress(int key, t_all *all);
 void	ft_rotate(int b, t_map *map, t_pos *pos);

@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/07 17:28:59 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/08 19:17:20 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ int	start_window(t_all *all, int ac, char **av)
 	start_struct(all->pos, all->map);
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
     	return (EXIT_FAILURE);
-	start_parse(&all, av[1]);
-	start_texture(all->text, all->data);
-    if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,
-		all->pos->height, "raycaster")) == NULL)
-    	return (EXIT_FAILURE);
-	all->data->img.ptr = mlx_new_image(all->data->mlx_ptr, all->pos->width,
-										all->pos->height);
-	all->data->img.data = (int *)mlx_get_data_addr(all->data->img.ptr, 
-			&(all->data->img.b), &(all->data->img.sizel), &(all->data->img.endi));
-	mlx_hook(all->data->mlx_win, 2, 0, ft_keypress, all);
-	mlx_loop_hook(all->data->mlx_ptr, print_game, all);
-	mlx_loop(all->data->mlx_ptr);
+	start_parse(all, av[1]);
+	// start_texture(all->text, all->data);
+    // if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,
+	// 	all->pos->height, "raycaster")) == NULL)
+    // 	return (EXIT_FAILURE);
+	// all->data->img.ptr = mlx_new_image(all->data->mlx_ptr, all->pos->width,
+	// 									all->pos->height);
+	// all->data->img.data = (int *)mlx_get_data_addr(all->data->img.ptr, 
+	// 		&(all->data->img.b), &(all->data->img.sizel), &(all->data->img.endi));
+	// mlx_hook(all->data->mlx_win, 2, 0, ft_keypress, all);
+	// mlx_loop_hook(all->data->mlx_ptr, print_game, all);
+	// mlx_loop(all->data->mlx_ptr);
 	return (1);
 }
 
