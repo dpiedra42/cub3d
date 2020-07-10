@@ -6,13 +6,18 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/08 19:22:54 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/10 19:05:06 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	**make_lines(char **gnl, int fd)
+void	sort_parameters(char **gnl, t_all *all)
+{
+	
+}
+
+char	**copy_lines(char **gnl, int fd)
 {
 	char	*ptr;
 	char	**tmp;
@@ -58,7 +63,7 @@ void	start_parse(t_all *all, char *cub)
 		ft_error(32, "Error : couldnt open file (FD)\n");
 	all->map->gnl = 0;
 	all->map->map = 0;
-	all->map->gnl = make_lines(all->map->gnl, fd);
-	printf("String is: %s\n", all->map->gnl[7]);
+	all->map->gnl = copy_lines(all->map->gnl, fd);
+	sort_parameters(all->map->gnl, all);
 	close(fd);
 }

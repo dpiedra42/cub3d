@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/08 19:18:12 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/07/10 18:45:07 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ int		start_window(t_all *all, int ac, char **av);
 void	start_struct(t_pos *pos, t_map *map);
 void    start_parse(t_all *all, char *cub);
 int		ft_error(int len, char *str);
-char	**make_lines(char **gnl, int fd);
+char	**copy_lines(char **gnl, int fd);
 int		get_next_line(int fd, char **line);
 char	*del_line(char *s);
 int		check_new(char *str);
