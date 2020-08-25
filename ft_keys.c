@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:49:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/02 16:20:32 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/24 20:21:24 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ void	ft_leftright(int b, t_pos *pos, t_map *map)
 	mspeed = 0.5;
 	if (b == -1)
 	{
-		if (worldmap[(int)(pos->x)][(int)(pos->y + map->dir_x * mspeed)] == 0)
+		if (map->worldmap[(int)(pos->x)][(int)(pos->y + map->dir_x * mspeed)] == 0)
 			pos->y += map->dir_x * mspeed;
-		if (worldmap[(int)(pos->x - map->dir_y * mspeed)][(int)(pos->y)] == 0)
+		if (map->worldmap[(int)(pos->x - map->dir_y * mspeed)][(int)(pos->y)] == 0)
 			pos->x -= map->dir_y * mspeed;
 	}
 	if (b == 1)
 	{
-		if (worldmap[(int)(pos->x)][(int)(pos->y - map->dir_x * mspeed)] == 0)
+		if (map->worldmap[(int)(pos->x)][(int)(pos->y - map->dir_x * mspeed)] == 0)
 			pos->y -= map->dir_x * mspeed;
-		if (worldmap[(int)(pos->x + map->dir_y * mspeed)][(int)(pos->y)] == 0)
+		if (map->worldmap[(int)(pos->x + map->dir_y * mspeed)][(int)(pos->y)] == 0)
 			pos->x += map->dir_y * mspeed;
 	}
 }
@@ -48,16 +48,16 @@ void	ft_forback(int b, t_pos *pos, t_map *map)
 	mspeed = 0.5;
 	if (b == -1)
     {
-		if(worldmap[(int)(pos->x + map->dir_x * mspeed)][(int)pos->y] == 0)
+		if(map->worldmap[(int)(pos->x + map->dir_x * mspeed)][(int)pos->y] == 0)
 			pos->x += map->dir_x * mspeed;
-		if(worldmap[(int)(pos->x)][(int)(pos->y + map->dir_y * mspeed)] == 0)
+		if(map->worldmap[(int)(pos->x)][(int)(pos->y + map->dir_y * mspeed)] == 0)
 			pos->y += map->dir_y * mspeed;
     }
     if (b == 1)
     {
-		if(worldmap[(int)(pos->x - map->dir_x * mspeed)][(int)(pos->y)] == 0)
+		if(map->worldmap[(int)(pos->x - map->dir_x * mspeed)][(int)(pos->y)] == 0)
 			pos->x -= map->dir_x * mspeed;
-		if(worldmap[(int)(pos->x)][(int)(pos->y - map->dir_y * mspeed)] == 0)
+		if(map->worldmap[(int)(pos->x)][(int)(pos->y - map->dir_y * mspeed)] == 0)
 			pos->y -= map->dir_y * mspeed;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/10 18:45:07 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/25 11:45:01 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,6 @@
 # define DOWN 125
 # define LEFT 123
 # define RIGHT 124
-
-static int worldmap[20][20] = {
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-};
 
 typedef struct	s_text
 {
@@ -81,11 +58,14 @@ typedef struct	s_map
 {
 	int				x;
 	int				y;
+	int				max_x;
+	int				max_y;
 	double			dir_x;
 	double			dir_y;
 	int				step_x;
     int				step_y;
 	int				side;
+	int				**worldmap;
 	char			**map;
 	char			**gnl;
 }				t_map;
@@ -133,6 +113,7 @@ typedef struct	s_all
 	t_draw			*draw;
 	t_ray			*ray;
 	t_data			*data;
+	int				res;
 }				t_all;
 
 int		start_window(t_all *all, int ac, char **av);
@@ -147,6 +128,16 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*get_line(char *s1);
 size_t	ft_strlen(const char *str);
 void	*ft_memmove(void *dst, const void *src, size_t len);
+void	init_params(t_all *all);
+char	**sort_parameters(char **gnl, t_all *all);
+int		ft_line(char c, char *str, t_all *all);
+void	ft_res(char *str, t_all *all);
+static int	numlen(const char *str);
+int		ft_atoi(const char *str);
+void	ft_map(char **map, t_all *all);
+int		ft_findy(char **map);
+void	ft_startmap(t_all *all);
+void	ft_fillmap(char **map, t_all *all);
 void    start_texture(t_text *text, t_data *data);
 int		ft_keypress(int key, t_all *all);
 void	ft_rotate(int b, t_map *map, t_pos *pos);
@@ -161,5 +152,6 @@ void	wall_hit(t_ray *ray, t_map *map);
 void	wall_dist(t_map *map, t_ray *ray, t_pos *pos);
 void	draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x);
 void	line_height(t_ray *ray, t_draw *draw, t_pos *pos);
+
 
 #endif

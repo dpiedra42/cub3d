@@ -6,15 +6,58 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/10 19:05:06 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/25 11:45:18 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	sort_parameters(char **gnl, t_all *all)
+int		ft_line(char c, char *str, t_all *all)
 {
-	
+	while (*str == ' ')
+		str++;
+	if (c == 'R' && *(str + 1) == ' ')
+		ft_res(str + 1, all);
+	else if (c == 'N' && *(str + 1) == 'O' && *(str + 2) == ' ')
+		ft_text();
+	else if (c == 'S' && *(str + 1) == 'O' && *(str + 2) == ' ')
+		ft_text();
+	else if (c == 'W' && *(str + 1) == 'E' && *(str + 2) == ' ')
+		ft_text();
+	else if (c == 'E' && *(str + 1) == 'A' && *(str + 2) == ' ')
+		ft_text();
+	// else if (c == 'S' && *(str + 1) == ' ')
+	// 	ft_text();
+	// else if (c == 'F' && *(str + 1) == ' ')
+	// 	ft_floor();
+	// else if (c == 'C' && *(str + 1) == ' ')
+	// 	ft_ceiling();
+	else if (c == '0' || c == '1' || c == '2')
+		return (0);
+	else if (c)
+		ft_error(29, "Error : Invalid line in file\n");
+	return (1);
+}
+
+char	**sort_parameters(char **gnl, t_all *all)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	while (gnl[i])
+	{
+		j = 0;
+		while(gnl[i][j] == ' ')
+			j++;
+		if(!ft_line(gnl[i][j], gnl[i], all))
+		{
+			return (&gnl[i]);
+		}
+		i++;
+	}
+	ft_error(21, "Error : no map found\n");
+	return(gnl);
 }
 
 char	**copy_lines(char **gnl, int fd)
@@ -49,10 +92,9 @@ char	**copy_lines(char **gnl, int fd)
 	return (gnl);
 }
 
-int	ft_error(int len, char *str)
+void	init_params(t_all *all)
 {
-	write(2, str, len);
-	return (-1);
+	all->res = 0;
 }
 
 void	start_parse(t_all *all, char *cub)
@@ -64,6 +106,8 @@ void	start_parse(t_all *all, char *cub)
 	all->map->gnl = 0;
 	all->map->map = 0;
 	all->map->gnl = copy_lines(all->map->gnl, fd);
-	sort_parameters(all->map->gnl, all);
 	close(fd);
+	init_params(all);
+	all->map->map = sort_parameters(all->map->gnl, all);
+	ft_map(all->map->map, all);
 }
