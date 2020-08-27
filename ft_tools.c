@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:59:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/24 19:50:52 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/27 17:30:39 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	numlen(const char *str)
 int		ft_atoi(const char *str)
 {
 	long int	num;
-
+	
 	num = 0;
 	while ((*str <= 13 && *str >= 9) || *str == 32)
 		str++;
