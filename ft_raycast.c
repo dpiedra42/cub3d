@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/24 20:18:26 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/26 20:23:47 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,35 +75,44 @@ void	wall_dist(t_map *map, t_ray *ray, t_pos *pos)
 {
 	if (map->side == 0)
 	{
+		if (map->x < pos->x)
+			ray->walldir = 'N';
+		else
+			ray->walldir = 'S';
 		ray->wall_dist = (map->x - pos->x + (1 - map->step_x) / 2) / ray->x;
 		ray->wallx = pos->y + ray->wall_dist * ray->y;	
 	}
 	else
 	{
+		if (map->y < pos->y)
+			ray->walldir = 'W';
+		else
+			ray->walldir = 'E';
 		ray->wall_dist = (map->y - pos->y + (1 - map->step_y) / 2) / ray->y;
 		ray->wallx = pos->x + ray->wall_dist * ray->x;
 	}
 	ray->wallx -= floor((ray->wallx));
 }
 
-void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw, t_text *text)
+void	raycast(t_all *all)
 {
 	int x;
 
 	x = 0;
-	while (x < pos->width)
+	while (x < all->pos->width)
 	{
-		start_raycast(pos, map, ray, x);
-		find_step(ray, pos, map);
-		wall_hit(ray, map);
-		wall_dist(map, ray, pos);
-		text->textx = (int)(ray->wallx * ((double)text->pink_width));
-		if (map->side == 0 && ray->x > 0)
-			text->textx = (text->pink_width) - text->textx - 1;
-		else if (map->side == 1 && ray->y < 0)
-			text->textx = (text->pink_width) - text->textx - 1;
-		line_height(ray, draw, pos);
-		draw_line(text, draw, data, pos, x);
+		start_raycast(all->pos, all->map, all->ray, x);
+		find_step(all->ray, all->pos, all->map);
+		wall_hit(all->ray, all->map);
+		wall_dist(all->map, all->ray, all->pos);
+		line_height(all->ray, all->draw, all->pos);
+		assign_text(all->text, all->ray);
+		all->textx = all->ray->wallx * (all->text->text_sizel / 4);
+		if (all->map->side == 0 && all->ray->x > 0)
+			all->textx = (all->text->text_sizel / 4) - all->textx - 1;
+		else if (all->map->side == 1 && all->ray->y < 0)
+			all->textx = (all->text->text_sizel / 4) - all->textx - 1;
+		draw_line(all, x);
 		x++;
 	}
 }

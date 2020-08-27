@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/25 11:45:01 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/26 20:32:15 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,41 @@
 
 typedef struct	s_text
 {
-	void		*pink;
-	int			*pink_data;
-	int			pink_height;
-	int			pink_width;
-	int			pink_sizel;
-	int			pink_b;
-	int			pink_endi;
-	int			textx;
+	char			*txt1_p;
+	char			*txt2_p;
+	char			*txt3_p;
+	char			*txt4_p;
+	void			*text1;
+	int				*text1_data;
+	int				text1_height;
+	int				text1_width;
+	int				text1_sizel;
+	int				text1_b;
+	int				text1_endi;
+	void			*text2;
+	int				*text2_data;
+	int				text2_height;
+	int				text2_width;
+	int				text2_sizel;
+	int				text2_b;
+	int				text2_endi;
+	void			*text3;
+	int				*text3_data;
+	int				text3_height;
+	int				text3_width;
+	int				text3_sizel;
+	int				text3_b;
+	int				text3_endi;
+	void			*text4;
+	int				*text4_data;
+	int				text4_height;
+	int				text4_width;
+	int				text4_sizel;
+	int				text4_b;
+	int				text4_endi;
+	int				*text_data;
+	int				text_sizel;
+	int				text_height;
 }				t_text;
 
 typedef struct	s_pos
@@ -86,23 +113,19 @@ typedef struct	s_ray
 	double			delta_x;
 	double			delta_y;
 	double			wall_dist;
+	char			walldir;
 	double			wallx;
 }				t_ray;
-
-typedef struct	s_img
-{
-	void			*ptr;
-	int				*data;
-	int				sizel;
-	int				b;
-	int				endi;
-}				t_img;
 
 typedef struct	s_data
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
-	t_img			img;
+	void			*img;
+	int				*i_data;
+	int				sizel;
+	int				b;
+	int				endi;
 }				t_data;
 
 typedef struct	s_all
@@ -114,44 +137,52 @@ typedef struct	s_all
 	t_ray			*ray;
 	t_data			*data;
 	int				res;
+	int				txt1;
+	int				txt2;
+	int				txt3;
+	int				txt4;
+	int				textx;
 }				t_all;
 
-int		start_window(t_all *all, int ac, char **av);
-void	start_struct(t_pos *pos, t_map *map);
-void    start_parse(t_all *all, char *cub);
-int		ft_error(int len, char *str);
-char	**copy_lines(char **gnl, int fd);
-int		get_next_line(int fd, char **line);
-char	*del_line(char *s);
-int		check_new(char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*get_line(char *s1);
-size_t	ft_strlen(const char *str);
-void	*ft_memmove(void *dst, const void *src, size_t len);
-void	init_params(t_all *all);
-char	**sort_parameters(char **gnl, t_all *all);
-int		ft_line(char c, char *str, t_all *all);
-void	ft_res(char *str, t_all *all);
+int			start_window(t_all *all, int ac, char **av);
+void		start_struct(t_pos *pos, t_map *map);
+void    	start_parse(t_all *all, char *cub);
+int			ft_error(int len, char *str);
+char		**copy_lines(char **gnl, int fd);
+int			get_next_line(int fd, char **line);
+char		*del_line(char *s);
+int			check_new(char *str);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*get_line(char *s1);
+size_t		ft_strlen(const char *str);
+void		*ft_memmove(void *dst, const void *src, size_t len);
+void		init_params(t_all *all);
+char		**sort_parameters(char **gnl, t_all *all);
+int			ft_line(char c, char *str, t_all *all);
+void		ft_res(char *str, t_all *all);
 static int	numlen(const char *str);
-int		ft_atoi(const char *str);
-void	ft_map(char **map, t_all *all);
-int		ft_findy(char **map);
-void	ft_startmap(t_all *all);
-void	ft_fillmap(char **map, t_all *all);
-void    start_texture(t_text *text, t_data *data);
-int		ft_keypress(int key, t_all *all);
-void	ft_rotate(int b, t_map *map, t_pos *pos);
-void	ft_forback(int b, t_pos *pos, t_map *map);
-void	ft_leftright(int b, t_pos *pos, t_map *map);
-void	ft_close(int b, t_data *data);
-int		print_game(t_all *all);
-void	raycast(t_pos *pos, t_map *map, t_ray *ray, t_data *data, t_draw *draw, t_text *text);
-void	start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
-void	find_step(t_ray *ray, t_pos *pos, t_map *map);
-void	wall_hit(t_ray *ray, t_map *map);
-void	wall_dist(t_map *map, t_ray *ray, t_pos *pos);
-void	draw_line(t_text *text, t_draw *draw, t_data *data, t_pos *pos, int x);
-void	line_height(t_ray *ray, t_draw *draw, t_pos *pos);
-
+int			ft_atoi(const char *str);
+void		ft_map(char **map, t_all *all);
+int			ft_findy(char **map);
+void		ft_startmap(t_all *all);
+void		ft_fillmap(char **map, t_all *all);
+void		txt_init(t_text *text, t_data *data);
+void		assign_text(t_text *text, t_ray *ray);
+void    	start_texture(t_all *all, char *str, int c);
+void		texture_check(int c, t_all *all);
+void		texture_checkcont(t_all *all, int c);
+int			ft_keypress(int key, t_all *all);
+void		ft_rotate(int b, t_map *map, t_pos *pos);
+void		ft_forback(int b, t_pos *pos, t_map *map);
+void		ft_leftright(int b, t_pos *pos, t_map *map);
+void		ft_close(int b, t_data *data);
+int			print_game(t_all *all);
+void		raycast(t_all *all);
+void		start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
+void		find_step(t_ray *ray, t_pos *pos, t_map *map);
+void		wall_hit(t_ray *ray, t_map *map);
+void		wall_dist(t_map *map, t_ray *ray, t_pos *pos);
+void		draw_line(t_all *all, int x);
+void		line_height(t_ray *ray, t_draw *draw, t_pos *pos);
 
 #endif

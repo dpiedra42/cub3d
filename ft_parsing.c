@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/25 12:20:11 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/26 20:36:39 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int		ft_line(char c, char *str, t_all *all)
 	if (c == 'R' && *(str + 1) == ' ')
 		ft_res(str + 1, all);
 	else if (c == 'N' && *(str + 1) == 'O' && *(str + 2) == ' ')
-		ft_text();
+		start_texture(all, str + 2, 1);
 	else if (c == 'S' && *(str + 1) == 'O' && *(str + 2) == ' ')
-		ft_text();
+		start_texture(all, str + 2, 2);
 	else if (c == 'W' && *(str + 1) == 'E' && *(str + 2) == ' ')
-		ft_text();
+		start_texture(all, str + 2, 3);
 	else if (c == 'E' && *(str + 1) == 'A' && *(str + 2) == ' ')
-		ft_text();
+		start_texture(all, str + 2, 4);
 	// else if (c == 'S' && *(str + 1) == ' ')
 	// 	ft_text();
 	// else if (c == 'F' && *(str + 1) == ' ')
@@ -95,6 +95,10 @@ char	**copy_lines(char **gnl, int fd)
 void	init_params(t_all *all)
 {
 	all->res = 0;
+	all->txt1 = 0;
+	all->txt2 = 0;
+	all->txt3 = 0;
+	all->txt4 = 0;
 }
 
 void	start_parse(t_all *all, char *cub)
