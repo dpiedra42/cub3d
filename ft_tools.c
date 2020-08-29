@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:59:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/27 17:30:39 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/29 10:33:21 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,27 @@ static int	numlen(const char *str)
 		str++;
 	}
 	return (i);
+}
+
+int		ft_atoifc(const char *str)
+{
+	long int	num;
+	
+	num = 0;
+	while ((*str <= 13 && *str >= 9) || *str == 32)
+		str++;
+	if (numlen(str) > 3)
+		return (-1);
+	while (*str)
+	{ 
+		if (*str >= '0' && *str <= '9')
+			num = num * 10 + (*str++ - '0');
+		else
+			break;
+	}
+	if (num < 0 || num > 255)
+		return (-1);
+	return ((int)num);
 }
 
 int		ft_atoi(const char *str)

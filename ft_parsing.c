@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/26 20:36:39 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/27 18:04:19 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int		ft_line(char c, char *str, t_all *all)
 		start_texture(all, str + 2, 4);
 	// else if (c == 'S' && *(str + 1) == ' ')
 	// 	ft_text();
-	// else if (c == 'F' && *(str + 1) == ' ')
-	// 	ft_floor();
-	// else if (c == 'C' && *(str + 1) == ' ')
-	// 	ft_ceiling();
+	else if (c == 'F' && *(str + 1) == ' ')
+		ft_floor(str + 1, all);
+	else if (c == 'C' && *(str + 1) == ' ')
+		ft_ceiling(str + 1, all);
 	else if (c == '0' || c == '1' || c == '2')
 		return (0);
 	else if (c)
@@ -99,6 +99,8 @@ void	init_params(t_all *all)
 	all->txt2 = 0;
 	all->txt3 = 0;
 	all->txt4 = 0;
+	all->floor = 0;
+	all->ceiling = 0;
 }
 
 void	start_parse(t_all *all, char *cub)
