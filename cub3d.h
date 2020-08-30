@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/29 10:31:46 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/30 15:50:25 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct	s_pos
 	double			camera_x;
 	int				width;
 	int				height;
+	char			playerpos;			
 }				t_pos;
 
 typedef struct	s_map
@@ -153,7 +154,6 @@ typedef struct	s_all
 }				t_all;
 
 int			start_window(t_all *all, int ac, char **av);
-void		start_struct(t_pos *pos, t_map *map);
 void    	start_parse(t_all *all, char *cub);
 int			ft_error(int len, char *str);
 char		**copy_lines(char **gnl, int fd);
@@ -175,7 +175,7 @@ static int	numlen(const char *str);
 int			ft_atoi(const char *str);
 int			ft_atoifc(const char *str);
 void		ft_map(char **map, t_all *all);
-int			ft_findy(char **map);
+int			ft_findx(char **map);
 void		ft_startmap(t_all *all);
 void		ft_fillmap(char **map, t_all *all);
 void		txt_init(t_text *text, t_data *data);
@@ -183,6 +183,10 @@ void		assign_text(t_text *text, t_ray *ray);
 void    	start_texture(t_all *all, char *str, int c);
 void		texture_check(int c, t_all *all);
 void		texture_checkcont(t_all *all, int c);
+void		ft_player(t_all *all);
+int			start_player(int x, int y, char spawn, t_all *all);
+void		ns_point(char spawn, t_all *all);
+void		we_point(char spawn, t_all *all);
 int			ft_keypress(int key, t_all *all);
 void		ft_rotate(int b, t_map *map, t_pos *pos);
 void		ft_forback(int b, t_pos *pos, t_map *map);

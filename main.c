@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/26 20:36:49 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/30 16:01:51 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@ int print_game(t_all *all)
 
 int	start_window(t_all *all, int ac, char **av)
 {
-	start_struct(all->pos, all->map);
 	start_parse(all, av[1]);
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
     	return (EXIT_FAILURE);
 	txt_init(all->text, all->data);
+	ft_rotate(-1, all->map, all->pos);
+	ft_rotate(1, all->map, all->pos);
+	ft_forback(-1, all->pos, all->map);
+	ft_forback(1, all->pos, all->map);
+	ft_leftright(1, all->pos, all->map);
+	ft_leftright(-1, all->pos, all->map);
     if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,
 		all->pos->height, "raycaster")) == NULL)
     	return (EXIT_FAILURE);
@@ -56,6 +61,12 @@ int	main(int ac, char **av)
 	all.map		=	&map;
 	all.ray		=	&ray;
 	all.draw	=	&draw;
+	// if (ac == 3 && ft_namecheck(av[1], "cub") && ft_savecheck(av[2], "--save"))
+	// 	start_window(&all, ac, av);
+	// else if (ac == 2 && ft_namecheck(av[1], "cub"))
+	// 	start_window(&all, ac, av);
+	// else
+	// 	write(2, "Error : Invalid arguments\n", 26);
 	start_window(&all, ac, av);
 	return (0);
 }

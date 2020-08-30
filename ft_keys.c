@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:49:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/24 20:21:24 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/30 16:03:03 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ int		ft_keypress(int key, t_all *all)
 	else if (key == S)
 		ft_forback(1, all->pos, all->map);
 	else if (key == A)
-		ft_leftright(1, all->pos, all->map);
-	else if (key == D)
 		ft_leftright(-1, all->pos, all->map);
+	else if (key == D)
+		ft_leftright(1, all->pos, all->map);
 	else if (key == LEFT)
-		ft_rotate(-1, all->map, all->pos);
-	else if (key == RIGHT)
 		ft_rotate(1, all->map, all->pos);
+	else if (key == RIGHT)
+		ft_rotate(-1, all->map, all->pos);
 	else if (key == ESC)
 		ft_close(1, all->data);
 	return (1);

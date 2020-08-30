@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:55:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/26 20:01:34 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/30 16:04:54 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	assign_text(t_text *text, t_ray *ray)
 		text->text_sizel = text->text2_sizel;
 		text->text_height = text->text2_height;
 	}
-	else if (ray->walldir == 'E')
+	else if (ray->walldir == 'W')
 	{
 		text->text_data = text->text3_data;
 		text->text_sizel = text->text3_sizel;

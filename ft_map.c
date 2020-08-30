@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 17:32:15 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/24 19:50:54 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/08/30 15:40:57 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_startmap(t_all *all)
 	}
 }
 
-int		ft_findy(char **map)
+int		ft_findx(char **map)
 {
 	int	i;
 	int	j;
@@ -104,7 +104,8 @@ void	ft_map(char **map, t_all *all)
 		i++;
 	}
 	all->map->max_y = i;
-    all->map->max_x = ft_findy(map);
+    all->map->max_x = ft_findx(map);
     ft_startmap(all);
     ft_fillmap(map, all);
+	ft_player(all);
 }
