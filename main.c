@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/30 16:01:51 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/05 16:22:21 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int print_game(t_all *all)
 {
 	raycast(all);
+	// start_sprite(all, all->sprite);
 	mlx_put_image_to_window(all->data->mlx_ptr, all->data->mlx_win,
 							all->data->img, 0, 0);
 	return (0);
@@ -47,13 +48,13 @@ int	start_window(t_all *all, int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_pos	pos;
-	t_map	map;
-	t_data	data;
-	t_ray	ray;
-	t_draw	draw;
-	t_all	all;
-	t_text  text;
+	t_pos		pos;
+	t_map		map;
+	t_data		data;
+	t_ray		ray;
+	t_draw		draw;
+	t_all		all;
+	t_text		text;
 
 	all.text	=	&text;
 	all.data	=	&data;

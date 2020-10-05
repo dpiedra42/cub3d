@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/26 20:23:47 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/05 16:25:17 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,29 @@ void	wall_hit(t_ray *ray, t_map *map)
 	}
 }
 
-void	wall_dist(t_map *map, t_ray *ray, t_pos *pos)
+void	wall_dist(t_all *all, int x)
 {
-	if (map->side == 0)
+	if (all->map->side == 0)
 	{
-		if (map->x < pos->x)
-			ray->walldir = 'N';
+		if (all->map->x < all->pos->x)
+			all->ray->walldir = 'N';
 		else
-			ray->walldir = 'S';
-		ray->wall_dist = (map->x - pos->x + (1 - map->step_x) / 2) / ray->x;
-		ray->wallx = pos->y + ray->wall_dist * ray->y;	
+			all->ray->walldir = 'S';
+		all->ray->wall_dist = (all->map->x - all->pos->x +
+								(1 - all->map->step_x) / 2) / all->ray->x;
+		all->ray->wallx = all->pos->y + all->ray->wall_dist * all->ray->y;	
 	}
 	else
 	{
-		if (map->y < pos->y)
-			ray->walldir = 'W';
+		if (all->map->y < all->pos->y)
+			all->ray->walldir = 'W';
 		else
-			ray->walldir = 'E';
-		ray->wall_dist = (map->y - pos->y + (1 - map->step_y) / 2) / ray->y;
-		ray->wallx = pos->x + ray->wall_dist * ray->x;
+			all->ray->walldir = 'E';
+		all->ray->wall_dist = (all->map->y - all->pos->y + (1 - all->map->step_y) / 2) / all->ray->y;
+		all->ray->wallx = all->pos->x + all->ray->wall_dist * all->ray->x;
 	}
-	ray->wallx -= floor((ray->wallx));
+	all->ray->wallx -= floor((all->ray->wallx));
+	all->data->sprite->zbuffer[x] = all->ray->wall_dist;
 }
 
 void	raycast(t_all *all)
@@ -104,7 +106,7 @@ void	raycast(t_all *all)
 		start_raycast(all->pos, all->map, all->ray, x);
 		find_step(all->ray, all->pos, all->map);
 		wall_hit(all->ray, all->map);
-		wall_dist(all->map, all->ray, all->pos);
+		wall_dist(all, x);
 		line_height(all->ray, all->draw, all->pos);
 		assign_text(all->text, all->ray);
 		all->textx = all->ray->wallx * (all->text->text_sizel / 4);

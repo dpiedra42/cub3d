@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:55:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/30 16:04:54 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/09/28 18:34:25 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ void	texture_checkcont(t_all *all, int c)
 			ft_error(27, "Error: E texture set twice\n");
 		else
 			all->txt4 = 1;
+	}
+	if (c == 5)
+	{
+		if (all->sprtxt)
+			ft_error(27, "Error: S texture set twice\n");
+		else
+			all->sprtxt = 1;
 	}
 }
 
@@ -46,7 +53,7 @@ void	texture_check(int c, t_all *all)
 		else
 			all->txt3 = 1;
 	}
-	if (c == 4)
+	if (c == 4 || c == 5)
 		texture_checkcont(all, c);
 }
 
@@ -67,6 +74,8 @@ void    start_texture(t_all *all, char *str, int c)
 		all->text->txt3_p = str;
 	if (c == 4)
 		all->text->txt4_p = str;
+	if (c == 5)
+		all->text->txtspr_p = str;
 	texture_check(c, all);
 }
 
@@ -108,6 +117,8 @@ void	txt_init(t_text *text, t_data *data)
 	text->txt3_p, &(text->text3_width), &(text->text3_height));
 	text->text4 = mlx_xpm_file_to_image(data->mlx_ptr,
 	text->txt4_p, &(text->text4_width), &(text->text4_height));
+	text->txtspr_p = mlx_xpm_file_to_image(data->mlx_ptr,
+	text->txtspr_p, &(text->textspr_width), &(text->textspr_height));
 
 	text->text1_data = (int *)mlx_get_data_addr(text->text1,
 	&text->text1_b, &text->text1_sizel, &text->text1_endi);
@@ -117,4 +128,6 @@ void	txt_init(t_text *text, t_data *data)
 	&text->text3_b, &text->text3_sizel, &text->text3_endi);
 	text->text4_data = (int *)mlx_get_data_addr(text->text4,
 	&text->text4_b, &text->text4_sizel, &text->text4_endi);
+	text->textspr_data = (int *)mlx_get_data_addr(text->textspr,
+	&text->textspr_b, &text->textspr_sizel, &text->textspr_endi);
 }

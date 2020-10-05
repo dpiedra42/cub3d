@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/30 15:50:25 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/05 16:23:11 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_text
 	char			*txt2_p;
 	char			*txt3_p;
 	char			*txt4_p;
+	char			*txtspr_p;
 	void			*text1;
 	int				*text1_data;
 	int				text1_height;
@@ -65,10 +66,40 @@ typedef struct	s_text
 	int				text4_sizel;
 	int				text4_b;
 	int				text4_endi;
+	void			*textspr;
+	int				*textspr_data;
+	int				textspr_height;
+	int				textspr_width;
+	int				textspr_sizel;
+	int				textspr_b;
+	int				textspr_endi;
 	int				*text_data;
 	int				text_sizel;
 	int				text_height;
+
 }				t_text;
+
+typedef struct	s_sprite
+{
+	int				*sprorder;
+	double			*spr_dist;
+	int				sprnum;
+	double			zbuffer[2560];
+	double			x;
+	double			y;
+	double			spr_x;
+	double			spr_y;
+	double			invdet;
+	double			trans_x;
+	double			trans_y;
+	int				sprscreen_x;
+	int				spr_h;
+	int				draws_y;
+	int				drawe_y;
+	int				spr_w;
+	int				draws_x;
+	int				drawe_x;
+}				t_sprite;
 
 typedef struct	s_pos
 {
@@ -124,6 +155,12 @@ typedef struct	s_ray
 	double			wallx;
 }				t_ray;
 
+typedef struct	s_spr
+{
+	float			x;
+	float			y;
+}				t_spr;
+
 typedef struct	s_data
 {
 	void			*mlx_ptr;
@@ -133,6 +170,8 @@ typedef struct	s_data
 	int				sizel;
 	int				b;
 	int				endi;
+	t_spr			*spr;
+	t_sprite		*sprite;
 }				t_data;
 
 typedef struct	s_all
@@ -150,6 +189,7 @@ typedef struct	s_all
 	int				txt2;
 	int				txt3;
 	int				txt4;
+	int				sprtxt;
 	int				textx;
 }				t_all;
 
@@ -187,6 +227,9 @@ void		ft_player(t_all *all);
 int			start_player(int x, int y, char spawn, t_all *all);
 void		ns_point(char spawn, t_all *all);
 void		we_point(char spawn, t_all *all);
+t_spr       *start_sprites(t_all *all);
+t_spr       *fill_spr(t_all *all, t_spr *sprites);
+int			count_sprites(t_map *map);
 int			ft_keypress(int key, t_all *all);
 void		ft_rotate(int b, t_map *map, t_pos *pos);
 void		ft_forback(int b, t_pos *pos, t_map *map);
@@ -197,7 +240,7 @@ void		raycast(t_all *all);
 void		start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);
 void		find_step(t_ray *ray, t_pos *pos, t_map *map);
 void		wall_hit(t_ray *ray, t_map *map);
-void		wall_dist(t_map *map, t_ray *ray, t_pos *pos);
+void		wall_dist(t_all *all, int x);
 void		draw_line(t_all *all, int x);
 int			conv_color(int red, int green, int blue);
 void		line_height(t_ray *ray, t_draw *draw, t_pos *pos);
