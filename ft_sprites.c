@@ -6,11 +6,51 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:49:46 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/09/28 19:32:46 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 14:19:34 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	order_sprites(t_sprite *sprite, t_spr *spr, t_all *all)
+{
+	double		spr_dist[sprite->sprnum];
+	int			tmp;
+	int			distmp;
+	int			i;
+
+	i = -1;
+	while (++i < sprite->sprnum)
+	{
+		spr_dist[i] = get_dist(all, spr, i);
+		sprite->sprorder[i] = i;
+	}
+	i = -1;
+	while (++i < sprite->sprnum - 1)
+	{
+		if (spr_dist[i] < spr_dist[i + 1])
+		{
+			distmp = spr_dist[i];
+			spr_dist[i] = spr_dist[i + 1];
+			spr_dist[i + 1] = distmp;
+			tmp = sprite->sprorder[i];
+			sprite->sprorder[i] = sprite->sprorder[i + 1];
+			sprite->sprorder[i + 1] = tmp;
+			i = -1;
+		}
+	}
+}
+
+void	sprite_height(t_all *all, t_sprite *sprite)
+{
+	sprite->spr_h = abs((int)(all->pos->height / sprite->trans_y));
+	sprite->draws_y = -sprite->spr_h / 2 + all->pos->height / 2;
+	if (sprite->draws_y < 0)
+		sprite->draws_y = 0;
+	sprite->drawe_y = sprite->spr_h / 2 + all->pos->height / 2;
+	if (sprite->drawe_y >= all->pos->height)
+		sprite->drawe_y = all->pos->height - 1;
+}
 
 void	sprite_width(t_all *all, t_sprite *sprite)
 {
@@ -23,30 +63,58 @@ void	sprite_width(t_all *all, t_sprite *sprite)
 		sprite->drawe_x = all->pos->width - 1;
 }
 
-void	sprite_height(t_all *all, t_sprite *sprite)
+void	draw_sprites(t_all *all, t_sprite *sprite)
 {
-	sprite->spr_h == fabs((int)(all->pos->height / sprite->trans_y));
-	sprite->draws_y = -sprite->spr_h / 2 + all->pos->height / 2;
-	if (sprite->draws_y < 0)
-		sprite->draws_y = 0;
-	sprite->drawe_y = sprite->spr_h / 2 + all->pos->height / 2;
-	if (sprite->drawe_y >= all->pos->height)
-		sprite->drawe_y = all->pos->height - 1;
+	int stripe;
+	int y;
+	int d;
+	int texty;
+
+	stripe = sprite->draws_x;
+	while (stripe < sprite->drawe_x)
+    {
+        all->textx = (int)(256 * (stripe - (-sprite->spr_w / 2 +
+		sprite->sprscreen_x)) * all->text->textspr_width / sprite->spr_w) / 256;
+		y = sprite->draws_y;
+        if (sprite->trans_y > 0 && stripe >= 0 && stripe < all->pos->width &&
+			sprite->trans_y < (float)sprite->zbuffer[stripe])
+			while(y < sprite->drawe_y)
+        	{
+         		d = (y) * 256 - all->pos->height * 128 + sprite->spr_h * 128;
+          		texty = ((d * all->text->textspr_height) / sprite->spr_h) / 256;
+				if (*(all->text->textspr_data + all->textx + texty *
+					all->text->textspr_sizel / 4))
+					*(all->data->i_data + sprite->x + sprite->y *
+					all->data->sizel /4) = *(all->text->textspr_data +
+					all->textx + texty * all->text->textspr_sizel / 4);
+        		y++;
+			}
+		stripe++;
+    }
 }
 
-void	start_sprite(t_all *all, t_sprite *sprite)
+void	make_sprite(t_all *all, t_sprite *sprite)
 {
 	int i;
+	t_spr	*sprites;
 
-	i = 0;	
-	sprite->spr_x = sprite->x - all->pos->x;
-	sprite->spr_y = sprite->y - all->pos->y;
-	sprite->invdet = 1.0 / (all->pos->plane_x * all->map->dir_y -
+	i = 0;
+	order_sprites(sprite, sprites, all);
+	while (i < sprite->sprnum)
+	{
+		// sprites = all->data->spr[sprite->sprorder[i++]];
+		sprite->spr_x = sprite->x - all->pos->x;
+		sprite->spr_y = sprite->y - all->pos->y;
+		sprite->invdet = 1.0 / (all->pos->plane_x * all->map->dir_y -
 			all->map->dir_x * all->pos->plane_y);
-	sprite->trans_x = sprite->invdet * (all->map->dir_y *
+		sprite->trans_x = sprite->invdet * (all->map->dir_y *
 					sprite->spr_x - all->map->dir_x * sprite->spr_y);
-	sprite->trans_y = sprite->invdet * ((-(all->pos->plane_y)) *
+		sprite->trans_y = sprite->invdet * ((-(all->pos->plane_y)) *
 					sprite->spr_x + all->pos->plane_x * sprite->spr_y);
-	sprite->sprscreen_x = (int)((all->pos->width / 2) *
+		sprite->sprscreen_x = (int)((all->pos->width / 2) *
 					(1 + sprite->trans_x / sprite->trans_y));
+		sprite_height(all, sprite);
+		sprite_width(all, sprite);
+		draw_sprites(all, sprite);
+	}
 }

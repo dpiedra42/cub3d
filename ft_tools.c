@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:59:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/29 10:33:21 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 14:36:16 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@ int	ft_error(int len, char *str)
 	write(2, str, len);
 	return (-1);
 }
+
+// int	get_dist(t_all *all, t_spr *spr, int i)
+// {
+// 	int distance; 
+
+// 	distance = ((all->pos->x - spr[i].x) * (all->pos->x - spr[i].x) +
+// 	(all->pos->y - spr[i].y) * (all->pos->y - spr[i].y));
+// 	return (distance);
+// }
 
 static int	numlen(const char *str)
 {

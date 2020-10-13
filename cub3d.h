@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/05 16:23:11 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 14:39:32 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct	s_text
 typedef struct	s_sprite
 {
 	int				*sprorder;
-	double			*spr_dist;
+	double			*sprdist;
 	int				sprnum;
 	double			zbuffer[2560];
 	double			x;

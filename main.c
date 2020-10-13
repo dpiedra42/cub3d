@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/05 16:22:21 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 14:19:26 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int print_game(t_all *all)
 {
 	raycast(all);
-	// start_sprite(all, all->sprite);
+	// make_sprite(all, all->data->sprite);
 	mlx_put_image_to_window(all->data->mlx_ptr, all->data->mlx_win,
 							all->data->img, 0, 0);
 	return (0);
