@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 14:36:35 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 15:37:30 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	wall_dist(t_all *all, int x)
 		all->ray->wallx = all->pos->x + all->ray->wall_dist * all->ray->x;
 	}
 	all->ray->wallx -= floor((all->ray->wallx));
-	// all->data->sprite->zbuffer[x] = all->ray->wall_dist;
+	all->ray->zbuffer[x] = all->ray->wall_dist;
 }
 
 void	raycast(t_all *all)

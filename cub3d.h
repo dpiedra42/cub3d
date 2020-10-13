@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 14:39:32 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 15:06:46 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,8 @@ typedef struct	s_sprite
 	int				*sprorder;
 	double			*sprdist;
 	int				sprnum;
-	double			zbuffer[2560];
-	double			x;
-	double			y;
+	int				x;
+	int				y;
 	double			spr_x;
 	double			spr_y;
 	double			invdet;
@@ -153,6 +152,7 @@ typedef struct	s_ray
 	double			wall_dist;
 	char			walldir;
 	double			wallx;
+	double			zbuffer[2560];
 }				t_ray;
 
 typedef struct	s_spr

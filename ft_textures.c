@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:55:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/09/28 18:34:25 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 15:35:59 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	texture_checkcont(t_all *all, int c)
 	if (c == 5)
 	{
 		if (all->sprtxt)
-			ft_error(27, "Error: S texture set twice\n");
+			ft_error(29, "Error: SPR texture set twice\n");
 		else
 			all->sprtxt = 1;
 	}
@@ -42,7 +42,7 @@ void	texture_check(int c, t_all *all)
 	if (c == 2)
 	{
 		if (all->txt2)
-			ft_error(27, "Error: S texture set twice\n");
+			ft_error(28, "Error: SO texture set twice\n");
 		else
 			all->txt2 = 1;
 	}
@@ -117,7 +117,7 @@ void	txt_init(t_text *text, t_data *data)
 	text->txt3_p, &(text->text3_width), &(text->text3_height));
 	text->text4 = mlx_xpm_file_to_image(data->mlx_ptr,
 	text->txt4_p, &(text->text4_width), &(text->text4_height));
-	text->txtspr_p = mlx_xpm_file_to_image(data->mlx_ptr,
+	text->textspr = mlx_xpm_file_to_image(data->mlx_ptr,
 	text->txtspr_p, &(text->textspr_width), &(text->textspr_height));
 
 	text->text1_data = (int *)mlx_get_data_addr(text->text1,

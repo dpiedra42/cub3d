@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 14:22:56 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/10/13 15:15:07 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void	init_params(t_all *all)
 	all->txt2 = 0;
 	all->txt3 = 0;
 	all->txt4 = 0;
+	all->sprtxt = 0;
 	all->floor = 0;
 	all->ceiling = 0;
 }
