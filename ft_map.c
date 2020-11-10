@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 17:32:15 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/09/29 17:06:46 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/09 18:27:41 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ void	ft_fillmap(char **map, t_all *all)
 
 	k = 0;
 	i = 0;
-	j = 0;
 	while (map[i])
 	{
 		l = 0;
+		j = 0;
 		while (map[i][j])
 		{
-			while (map[i][j] == ' ')
-				j++;
-			if (map[i][j])
-				all->map->worldmap[k][l++] = map[i][j++] - '0';
+			if (map[i][j] == ' ')
+				all->map->worldmap[k][l++] = 0;
+			else if (map[i][j])
+				all->map->worldmap[k][l++] = map[i][j] - '0';
+			j++;
 		}
-		j = 0;
 		i++;
 		k++;
 	}
@@ -63,25 +63,27 @@ int		ft_findx(char **map)
 	int	i;
 	int	j;
 	int	len;
-	int	ylen;
+	int	xlen;
 
 	i = 0;
-	ylen = 0;
+	xlen = 0;
 	while (map[i])
 	{
 		len = 0;
 		j = 0;
 		while (map[i][j])
 		{
+			if (map[i][j] == ' ')
+				len++;
 			if(map[i][j] != ' ')
 				len++;
 			j++;
 		}
-		if (len > ylen)
-			ylen = len;
+		if (len > xlen)
+			xlen = len;
 		i++;
 	}
-	return (ylen);
+	return (xlen);
 }
 
 void	ft_map(char **map, t_all *all)

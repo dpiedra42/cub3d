@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 15:37:30 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/06 18:22:52 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	wall_dist(t_all *all, int x)
 		all->ray->wall_dist = (all->map->y - all->pos->y + (1 - all->map->step_y) / 2) / all->ray->y;
 		all->ray->wallx = all->pos->x + all->ray->wall_dist * all->ray->x;
 	}
-	all->ray->wallx -= floor((all->ray->wallx));
 	all->ray->zbuffer[x] = all->ray->wall_dist;
 }
 
@@ -109,6 +108,7 @@ void	raycast(t_all *all)
 		wall_dist(all, x);
 		line_height(all->ray, all->draw, all->pos);
 		assign_text(all->text, all->ray);
+		all->ray->wallx -= floor((all->ray->wallx));
 		all->textx = all->ray->wallx * (all->text->text_sizel / 4);
 		if (all->map->side == 0 && all->ray->x > 0)
 			all->textx = (all->text->text_sizel / 4) - all->textx - 1;

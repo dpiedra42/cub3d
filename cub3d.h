@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 15:06:46 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/09 19:57:20 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ typedef struct	s_text
 
 typedef struct	s_sprite
 {
-	int				*sprorder;
-	double			*sprdist;
-	int				sprnum;
 	int				x;
 	int				y;
 	double			spr_x;
@@ -124,7 +121,6 @@ typedef struct	s_map
     int				step_y;
 	int				side;
 	int				**worldmap;
-	char			**map;
 	char			**gnl;
 }				t_map;
 
@@ -170,6 +166,7 @@ typedef struct	s_data
 	int				sizel;
 	int				b;
 	int				endi;
+	int				*sprorder;
 	t_spr			*spr;
 	t_sprite		*sprite;
 }				t_data;
@@ -191,10 +188,11 @@ typedef struct	s_all
 	int				txt4;
 	int				sprtxt;
 	int				textx;
+	int				sprnum;
 }				t_all;
 
 int			start_window(t_all *all, int ac, char **av);
-void    	start_parse(t_all *all, char *cub);
+int			start_parse(t_all *all, char *cub);
 int			ft_error(int len, char *str);
 char		**copy_lines(char **gnl, int fd);
 int			get_next_line(int fd, char **line);
@@ -230,11 +228,17 @@ void		we_point(char spawn, t_all *all);
 t_spr       *start_sprites(t_all *all);
 t_spr       *fill_spr(t_all *all, t_spr *sprites);
 int			count_sprites(t_map *map);
+void		make_sprite(t_all *all);
+void		draw_sprites(t_all *all, t_sprite *sprite);
+void		sprite_width(t_all *all, t_sprite *sprite);
+void		sprite_height(t_all *all, t_sprite *sprite);
+void		order_sprites(t_all *all);
+int			get_dist(t_all *all, int i);
 int			ft_keypress(int key, t_all *all);
 void		ft_rotate(int b, t_map *map, t_pos *pos);
 void		ft_forback(int b, t_pos *pos, t_map *map);
 void		ft_leftright(int b, t_pos *pos, t_map *map);
-void		ft_close(int b, t_data *data);
+int			ft_close(t_all *all);
 int			print_game(t_all *all);
 void		raycast(t_all *all);
 void		start_raycast(t_pos *pos, t_map *map, t_ray *ray, int x);

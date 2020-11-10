@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 15:15:07 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/09 19:06:48 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,28 +94,35 @@ char	**copy_lines(char **gnl, int fd)
 
 void	init_params(t_all *all)
 {
-	all->res = 0;
 	all->txt1 = 0;
 	all->txt2 = 0;
 	all->txt3 = 0;
 	all->txt4 = 0;
 	all->sprtxt = 0;
+	all->res = 0;
 	all->floor = 0;
 	all->ceiling = 0;
+	all->draw->floor_r = 0;
+	all->draw->floor_g = 0;
+	all->draw->floor_b = 0;
+	all->draw->ceil_r = 0;
+	all->draw->ceil_g = 0;
+	all->draw->ceil_b = 0;
 }
 
-void	start_parse(t_all *all, char *cub)
+int	start_parse(t_all *all, char *cub)
 {
 	int	fd;
+	char **map;
 	
 	if ((fd = open(cub, O_RDONLY)) < 0)
 		ft_error(32, "Error : couldnt open file (FD)\n");
 	all->map->gnl = 0;
-	all->map->map = 0;
 	all->map->gnl = copy_lines(all->map->gnl, fd);
 	close(fd);
 	init_params(all);
-	all->map->map = sort_parameters(all->map->gnl, all);
-	ft_map(all->map->map, all);
+	map = sort_parameters(all->map->gnl, all);
+	ft_map(map, all);
 	all->data->spr = start_sprites(all);
+	return (1);
 }

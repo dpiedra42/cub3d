@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:33:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 14:26:41 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/09 19:48:16 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ t_spr	*start_sprites(t_all *all)
 {
 	t_spr   *sprites;
 
-	all->data->sprite->sprnum = count_sprites(all->map);
-	all->data->sprite->sprorder = malloc(sizeof(int) * (all->data->sprite->sprnum));
-	sprites = malloc(sizeof(t_spr) * all->data->sprite->sprnum);
+	all->sprnum = 0;
+	all->sprnum = count_sprites(all->map);
+	sprites = malloc(sizeof(t_spr) * all->sprnum);
+	all->data->sprorder = malloc(sizeof(int) * (all->sprnum));
 	sprites = fill_spr(all, sprites);
 	return (sprites);
 }
