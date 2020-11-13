@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 17:16:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/07 16:20:23 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/13 17:34:04 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_line(t_all *all, int x)
 	textpos = (all->draw->start - all->pos->height / 2 + 
 				all->draw->line_height / 2) * step;
 	text = all->text->text_data;
-	while (++i < all->draw->start)
+	while (++i <= all->draw->start)
 		*(all->data->i_data + x + i * all->data->sizel / 4) =
 		conv_color(all->draw->ceil_r, all->draw->ceil_g, all->draw->ceil_b);
 	while (i <= all->draw->end)
