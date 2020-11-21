@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:27:58 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/21 17:47:21 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/21 17:58:36 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_checkcub(char *av, char *str)
 	i = 0;
 	while (av[i] != '\0')
 		i++;
-	if ((i > 4 && av[i - 1] == str[2] && av[i - 2] == str[1])
+	if (i > 4 && av[i - 1] == str[2] && av[i - 2] == str[1]
 		&& (av[i - 3] == str[0] && av[i - 4] == '.'))
 		return (1);
 	return (0);
@@ -27,5 +27,14 @@ int	ft_checkcub(char *av, char *str)
 
 int	ft_checksave(char *av, char *str)
 {
+	int	i;
+
+	i = 0;
+	while (av[i] == str[i])
+	{
+		if (av[i] == '\0' && str[i] == '\0')
+			return (1);
+		i++;
+	}
 	return (0);
 }

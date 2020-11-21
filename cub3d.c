@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/21 17:40:44 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/21 18:04:03 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	start_window(t_all *all, int bmp, char **av)
 										all->pos->height);
 	all->data->i_data = (int *)mlx_get_data_addr(all->data->img, 
 			&(all->data->b), &(all->data->sizel), &(all->data->endi));
+	if (bmp == 1)
+		ft_makebitmap(all);
     if ((all->data->mlx_win = mlx_new_window(all->data->mlx_ptr, all->pos->width,
 		all->pos->height, "raycaster")) == NULL)
     	return (EXIT_FAILURE);
@@ -63,13 +65,11 @@ int	main(int ac, char **av)
 	all.map		=	&map;
 	all.ray		=	&ray;
 	all.draw	=	&draw;
-	// if (ac == 3 && ft_checkcub(av[1], "cub") && ft_checksave(av[2], "--save"))
-	// 	start_window(&all, 1, av);
-	if (ac == 2 && ft_checkcub(av[1], "cub"))
+	if (ac == 3 && ft_checkcub(av[1], "cub") && ft_checksave(av[2], "--save"))
+		start_window(&all, 1, av);
+	else if (ac == 2 && ft_checkcub(av[1], "cub"))
 		start_window(&all, 0, av);
 	else
 		write(2, "Error : Invalid arguments\n", 26);
 	return (0);
 }
-// map.cub
-// gcc mlxline.c -o mlxline.a -Lminilibx_og  -lmlx -framework OpenGL -framework AppKit

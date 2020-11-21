@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/20 16:58:54 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/01 16:44:46 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/21 17:57:54 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,4 @@ int main(void)
     return (EXIT_SUCCESS);
 }
 // gcc test.c -o test.a -Lminilibx_og  -lmlx -framework OpenGL -framework AppKit
+// gcc mlxline.c -o mlxline.a -Lminilibx_og  -lmlx -framework OpenGL -framework AppKit
