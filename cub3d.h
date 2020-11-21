@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/09 19:57:20 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/21 17:40:42 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,5 +248,6 @@ void		wall_dist(t_all *all, int x);
 void		draw_line(t_all *all, int x);
 int			conv_color(int red, int green, int blue);
 void		line_height(t_ray *ray, t_draw *draw, t_pos *pos);
+int			ft_checkcub(char *av, char *str);
 
 #endif

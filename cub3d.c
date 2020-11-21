@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:08:28 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/09 20:01:05 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/21 17:40:44 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int print_game(t_all *all)
 	return (0);
 }
 
-int	start_window(t_all *all, int ac, char **av)
+int	start_window(t_all *all, int bmp, char **av)
 {
 	start_parse(all, av[1]);
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
@@ -63,14 +63,13 @@ int	main(int ac, char **av)
 	all.map		=	&map;
 	all.ray		=	&ray;
 	all.draw	=	&draw;
-	// if (ac == 3 && ft_namecheck(av[1], "cub") && ft_savecheck(av[2], "--save"))
-	// 	start_window(&all, ac, av);
-	// else if (ac == 2 && ft_namecheck(av[1], "cub"))
-	// 	start_window(&all, ac, av);
-	// else
-	// 	write(2, "Error : Invalid arguments\n", 26);
-	start_window(&all, ac, av);
+	// if (ac == 3 && ft_checkcub(av[1], "cub") && ft_checksave(av[2], "--save"))
+	// 	start_window(&all, 1, av);
+	if (ac == 2 && ft_checkcub(av[1], "cub"))
+		start_window(&all, 0, av);
+	else
+		write(2, "Error : Invalid arguments\n", 26);
 	return (0);
 }
-
+// map.cub
 // gcc mlxline.c -o mlxline.a -Lminilibx_og  -lmlx -framework OpenGL -framework AppKit
