@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:04:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/23 18:31:08 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/23 18:33:10 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	bmp_header(t_all *all, int fd)
 
 	n = 0;
 	while (n < 14)
-		header[n++] = (unsigned char)(0);
-	header[0] = (unsigned char)(66);
-	header[1] = (unsigned char)(77);
+	header[n++] = (unsigned char)(0);
+	header[0] = (unsigned char)('B');
+	header[1] = (unsigned char)('M');
 	n = all->pos->height * all->pos->width * 4 + 54;
 	header[2] = (unsigned char)(n % 256);
 	header[3] = (unsigned char)(n / 256 % 256);
