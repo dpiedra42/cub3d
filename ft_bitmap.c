@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:04:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/23 18:33:10 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/23 20:35:27 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	bmp_data(t_all *all, int fd)
 	int				j;
 
 	i = all->pos->width * (all->pos->height - 1);
-	while(i >= 0)
+	while (i >= 0)
 	{
 		j = 0;
 		while (j < all->pos->width)
@@ -38,46 +38,34 @@ void	bmp_data(t_all *all, int fd)
 
 void	bmp_info(t_all *all, int fd)
 {
-	int				n;
-	unsigned char	header[40];
+	int	headersize;
+	int	plane;
+	int	image_size;
 
-	n = 0;
-	while (n < 40)
-		header[n++] = (unsigned char)(0);
-	header[0] = (unsigned char)(40);
-	n = all->pos->width;
-	header[4] = (unsigned char)(n % 256);
-	header[5] = (unsigned char)(n / 256 % 256);
-	header[6] = (unsigned char)(n / 256 / 256 % 256);
-	header[7] = (unsigned char)(n / 256 / 256 / 256);
-	n = all->pos->height;
-	header[8] = (unsigned char)(n % 256);
-	header[9] = (unsigned char)(n / 256 % 256);
-	header[10] = (unsigned char)(n / 256 / 256 % 256);
-	header[11] = (unsigned char)(n / 256 / 256 / 256);
-	header[12] = (unsigned char)(1);
-	header[14] = (unsigned char)(32);
-	write(fd, header, 40);
-
+	headersize = 40;
+	plane = 1;
+	image_size = all->pos->width * all->pos->height;
+	write(fd, &headersize, 4);
+	write(fd, &all->pos->width, 4);
+	write(fd, &all->pos->height, 4);
+	write(fd, &plane, 2);
+	write(fd, &all->data->b, 2);
+	write(fd, "\0\0\0\0", 4);
+	write(fd, &image_size, 4);
+	write(fd, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16);
 }
 
 void	bmp_header(t_all *all, int fd)
 {
-	unsigned char	header[14];
-	int				n;
+	int filesize;
+	int offbit;
 
-	n = 0;
-	while (n < 14)
-	header[n++] = (unsigned char)(0);
-	header[0] = (unsigned char)('B');
-	header[1] = (unsigned char)('M');
-	n = all->pos->height * all->pos->width * 4 + 54;
-	header[2] = (unsigned char)(n % 256);
-	header[3] = (unsigned char)(n / 256 % 256);
-	header[4] = (unsigned char)(n / 256 / 256 % 256);
-	header[5] = (unsigned char)(n / 256 / 256 / 256);
-	header[10] = (unsigned char)(54);
-	write(fd, header, 14);
+	offbit = 54;
+	filesize = offbit + all->pos->width * all->pos->height * 4;
+	write(fd, "BM", 2);
+	write(fd, &filesize, 4);
+	write(fd, "\0\0\0\0", 4);
+	write(fd, &offbit, 4);
 }
 
 void	ft_makebitmap(t_all *all)
