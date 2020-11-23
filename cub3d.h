@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/21 17:40:42 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/23 18:00:40 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,5 +249,8 @@ void		draw_line(t_all *all, int x);
 int			conv_color(int red, int green, int blue);
 void		line_height(t_ray *ray, t_draw *draw, t_pos *pos);
 int			ft_checkcub(char *av, char *str);
+int			ft_checksave(char *av, char *str);
+void		bmp_header(t_all *all, int fd);
+void		ft_makebitmap(t_all *all);
 
 #endif

@@ -6,11 +6,16 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:04:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/21 19:05:14 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/23 18:06:54 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// void	bmp_data(t_all *all, int fd)
+// {
+
+// }
 
 void	bmp_header(t_all *all, int fd)
 {
@@ -41,9 +46,9 @@ void	ft_makebitmap(t_all *all)
 
 	print_game(all);
 	if ((fd = open("bitmap.bmp", O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU)) < 0)
-		ft_error(27, "Error: E can't make bitmap\n");
+		ft_error(25, "Error: Can't make bitmap\n");
 	bmp_header(all, fd);
-	// bmp_data
+	// bmp_data(all, fd);
 	close(fd);
 	ft_close(all);
 }
