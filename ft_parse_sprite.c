@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:33:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/09 19:48:16 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:04:58 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		count_sprites(t_map *map)
 
 t_spr	*start_sprites(t_all *all)
 {
-	t_spr   *sprites;
+	t_spr	*sprites;
 
 	all->sprnum = 0;
 	all->sprnum = count_sprites(all->map);

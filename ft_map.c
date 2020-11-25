@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 17:32:15 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/09 18:27:41 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:03:59 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	ft_fillmap(char **map, t_all *all)
 void	ft_startmap(t_all *all)
 {
 	int	i;
-    int	j;
-    
-    i = 0;
+	int	j;
+
+	i = 0;
 	all->map->worldmap = malloc(sizeof(int *) * (all->map->max_y + 1));
 	while (i <= all->map->max_y)
 	{
@@ -75,7 +75,7 @@ int		ft_findx(char **map)
 		{
 			if (map[i][j] == ' ')
 				len++;
-			if(map[i][j] != ' ')
+			if (map[i][j] != ' ')
 				len++;
 			j++;
 		}
@@ -88,7 +88,7 @@ int		ft_findx(char **map)
 
 void	ft_map(char **map, t_all *all)
 {
-    int i;
+	int i;
 	int j;
 	int	tmp;
 
@@ -106,8 +106,8 @@ void	ft_map(char **map, t_all *all)
 		i++;
 	}
 	all->map->max_y = i;
-    all->map->max_x = ft_findx(map);
-    ft_startmap(all);
-    ft_fillmap(map, all);
+	all->map->max_x = ft_findx(map);
+	ft_startmap(all);
+	ft_fillmap(map, all);
 	ft_player(all);
 }

@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 17:18:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/06 18:22:52 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:11:23 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	wall_hit(t_ray *ray, t_map *map)
 			map->y += map->step_y;
 			map->side = 1;
 		}
-		if (map->worldmap[map->x][map->y] == 1) 
+		if (map->worldmap[map->x][map->y] == 1)
 			hit = 1;
 	}
 }
@@ -81,7 +81,7 @@ void	wall_dist(t_all *all, int x)
 			all->ray->walldir = 'S';
 		all->ray->wall_dist = (all->map->x - all->pos->x +
 								(1 - all->map->step_x) / 2) / all->ray->x;
-		all->ray->wallx = all->pos->y + all->ray->wall_dist * all->ray->y;	
+		all->ray->wallx = all->pos->y + all->ray->wall_dist * all->ray->y;
 	}
 	else
 	{
@@ -89,7 +89,8 @@ void	wall_dist(t_all *all, int x)
 			all->ray->walldir = 'W';
 		else
 			all->ray->walldir = 'E';
-		all->ray->wall_dist = (all->map->y - all->pos->y + (1 - all->map->step_y) / 2) / all->ray->y;
+		all->ray->wall_dist = (all->map->y - all->pos->y + (1 -
+								all->map->step_y) / 2) / all->ray->y;
 		all->ray->wallx = all->pos->x + all->ray->wall_dist * all->ray->x;
 	}
 	all->ray->zbuffer[x] = all->ray->wall_dist;

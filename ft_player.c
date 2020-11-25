@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 12:35:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/04 19:19:08 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:09:39 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		start_player(int x, int y, char spawn, t_all *all)
 	if (spawn != 'N' && spawn != 'S' && spawn != 'E' && spawn != 'W')
 		ft_error(26, "Error : Wrong spawn point\n");
 	if (all->pos->playerpos > 0)
-		ft_error(26,"Error : Many spawn points\n");
+		ft_error(26, "Error : Many spawn points\n");
 	all->pos->x = x + 0.5;
 	all->pos->y = y + 0.5;
 	if (spawn == 'N' || spawn == 'S')
@@ -85,7 +85,8 @@ void	ft_player(t_all *all)
 		j = 0;
 		while (j <= all->map->max_x)
 		{
-			all->pos->playerpos += map_val(all->map->worldmap[i][j], i, j , all);
+			all->pos->playerpos += map_val(all->map->worldmap[i][j],
+											i, j, all);
 			j++;
 		}
 		i++;

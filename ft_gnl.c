@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 18:15:26 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/07/07 18:24:24 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 15:54:21 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ char	*del_line(char *s)
 	newstr[j] = '\0';
 	return (newstr);
 }
-
 
 int		get_next_line(int fd, char **line)
 {

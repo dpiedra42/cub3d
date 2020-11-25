@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/09 19:06:48 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:08:37 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ char	**sort_parameters(char **gnl, t_all *all)
 	while (gnl[i])
 	{
 		j = 0;
-		while(gnl[i][j] == ' ')
+		while (gnl[i][j] == ' ')
 			j++;
-		if(!ft_line(gnl[i][j], gnl[i], all))
+		if (!ft_line(gnl[i][j], gnl[i], all))
 		{
 			return (&gnl[i]);
 		}
 		i++;
 	}
 	ft_error(21, "Error : no map found\n");
-	return(gnl);
+	return (gnl);
 }
 
 char	**copy_lines(char **gnl, int fd)
@@ -90,6 +90,7 @@ char	**copy_lines(char **gnl, int fd)
 		i++;
 	}
 	return (gnl);
+	// 28 line;
 }
 
 void	init_params(t_all *all)
@@ -110,11 +111,11 @@ void	init_params(t_all *all)
 	all->draw->ceil_b = 0;
 }
 
-int	start_parse(t_all *all, char *cub)
+int		start_parse(t_all *all, char *cub)
 {
-	int	fd;
-	char **map;
-	
+	int		fd;
+	char	**map;
+
 	if ((fd = open(cub, O_RDONLY)) < 0)
 		ft_error(32, "Error : couldnt open file (FD)\n");
 	all->map->gnl = 0;

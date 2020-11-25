@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:49:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/07 17:13:09 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:01:20 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,20 @@ void	ft_leftright(int b, t_pos *pos, t_map *map)
 	mspeed = 0.5;
 	if (b == -1)
 	{
-		if (map->worldmap[(int)(pos->x)][(int)(pos->y + map->dir_x * mspeed)] != 1)
+		if (map->worldmap[(int)(pos->x)][(int)(pos->y + map->dir_x *
+		mspeed)] != 1)
 			pos->y += map->dir_x * mspeed * 0.5;
-		if (map->worldmap[(int)(pos->x - map->dir_y * mspeed)][(int)(pos->y)] != 1)
+		if (map->worldmap[(int)(pos->x - map->dir_y * mspeed)]
+			[(int)(pos->y)] != 1)
 			pos->x -= map->dir_y * mspeed * 0.5;
 	}
 	if (b == 1)
 	{
-		if (map->worldmap[(int)(pos->x)][(int)(pos->y - map->dir_x * mspeed)] != 1)
+		if (map->worldmap[(int)(pos->x)][(int)(pos->y - map->dir_x *
+			mspeed)] != 1)
 			pos->y -= map->dir_x * mspeed * 0.5;
-		if (map->worldmap[(int)(pos->x + map->dir_y * mspeed)][(int)(pos->y)] != 1)
+		if (map->worldmap[(int)(pos->x + map->dir_y * mspeed)]
+			[(int)(pos->y)] != 1)
 			pos->x += map->dir_y * mspeed * 0.5;
 	}
 }
@@ -56,38 +60,44 @@ void	ft_forback(int b, t_pos *pos, t_map *map)
 
 	mspeed = 0.5;
 	if (b == -1)
-    {
-		if(map->worldmap[(int)(pos->x + map->dir_x * mspeed)][(int)pos->y] != 1)
+	{
+		if (map->worldmap[(int)(pos->x + map->dir_x * mspeed)]
+			[(int)pos->y] != 1)
 			pos->x += map->dir_x * mspeed * 0.5;
-		if(map->worldmap[(int)(pos->x)][(int)(pos->y + map->dir_y * mspeed)] != 1)
+		if (map->worldmap[(int)(pos->x)][(int)(pos->y + map->dir_y *
+			mspeed)] != 1)
 			pos->y += map->dir_y * mspeed * 0.5;
-    }
-    if (b == 1)
-    {
-		if(map->worldmap[(int)(pos->x - map->dir_x * mspeed)][(int)(pos->y)] != 1)
+	}
+	if (b == 1)
+	{
+		if (map->worldmap[(int)(pos->x - map->dir_x * mspeed)]
+			[(int)(pos->y)] != 1)
 			pos->x -= map->dir_x * mspeed * 0.5;
-		if(map->worldmap[(int)(pos->x)][(int)(pos->y - map->dir_y * mspeed)] != 1)
+		if (map->worldmap[(int)(pos->x)][(int)(pos->y - map->dir_y *
+			mspeed)] != 1)
 			pos->y -= map->dir_y * mspeed * 0.5;
 	}
 }
 
 void	ft_rotate(int b, t_map *map, t_pos *pos)
 {
-	double oldDirX;
-	double oldPlaneX;
+	double olddirx;
+	double oldplanex;
 	double rspeed;
 
-	oldDirX = map->dir_x;
-	oldPlaneX = pos->plane_x;
+	olddirx = map->dir_x;
+	oldplanex = pos->plane_x;
 	rspeed = 0.05;
 	map->dir_x = map->dir_x * cos(b * rspeed) - map->dir_y * sin(b * rspeed);
-	map->dir_y = oldDirX * sin(b * rspeed) + map->dir_y * cos(b * rspeed);
-	pos->plane_x = pos->plane_x * cos(b * rspeed) - pos->plane_y * sin(b * rspeed);
-	pos->plane_y = oldPlaneX * sin(b * rspeed) + pos->plane_y * cos(b * rspeed);
+	map->dir_y = olddirx * sin(b * rspeed) + map->dir_y * cos(b * rspeed);
+	pos->plane_x = pos->plane_x * cos(b * rspeed) - pos->plane_y *
+					sin(b * rspeed);
+	pos->plane_y = oldplanex * sin(b * rspeed) + pos->plane_y *
+					cos(b * rspeed);
 }
 
 int		ft_keypress(int key, t_all *all)
-{	
+{
 	if (key == W)
 		ft_forback(-1, all->pos, all->map);
 	else if (key == S)

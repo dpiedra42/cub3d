@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:49:46 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/10 16:36:25 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:14:49 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	sprite_width(t_all *all, t_sprite *sprite)
 	if (sprite->draws_x < 0)
 		sprite->draws_x = 0;
 	sprite->drawe_x = sprite->spr_w / 2 + sprite->sprscreen_x;
-	if(sprite->drawe_x >= all->pos->width)
+	if (sprite->drawe_x >= all->pos->width)
 		sprite->drawe_x = all->pos->width;
 }
 
@@ -72,33 +72,34 @@ void	draw_sprites(t_all *all, t_sprite *sprite)
 
 	stripe = sprite->draws_x;
 	while (stripe < sprite->drawe_x)
-    {
-        all->textx = (int)((stripe - (-sprite->spr_w / 2 +
+	{
+		all->textx = (int)((stripe - (-sprite->spr_w / 2 +
 		sprite->sprscreen_x)) * all->text->textspr_width / sprite->spr_w);
 		y = sprite->draws_y;
-        if (sprite->trans_y > 0 && stripe >= 0 && stripe < all->pos->width &&
+		if (sprite->trans_y > 0 && stripe >= 0 && stripe < all->pos->width &&
 			sprite->trans_y < (float)all->ray->zbuffer[stripe])
-			while(y < sprite->drawe_y)
-        	{
-         		d = (y) * 256 - all->pos->height * 128 + sprite->spr_h * 128;
-          		texty = ((d * all->text->textspr_height) / sprite->spr_h) / 256;
+			while (y < sprite->drawe_y)
+			{
+				d = (y) * 256 - all->pos->height * 128 + sprite->spr_h * 128;
+				texty = ((d * all->text->textspr_height) / sprite->spr_h) / 256;
 				if (*(all->text->textspr_data + all->textx + texty *
 					all->text->textspr_sizel / 4))
 					*(all->data->i_data + stripe + y *
-					all->data->sizel /4) = *(all->text->textspr_data +
+					all->data->sizel / 4) = *(all->text->textspr_data +
 					all->textx + texty * all->text->textspr_sizel / 4);
-        		y++;
+				y++;
 			}
 		stripe++;
-    }
+	}
 }
+// 26 lines
 
 void	make_sprite(t_all *all)
 {
-	int i;
-	t_spr	sprites;
-	t_sprite sprite;
-	
+	int			i;
+	t_spr		sprites;
+	t_sprite	sprite;
+
 	i = 0;
 	order_sprites(all);
 	while (i < all->sprnum)

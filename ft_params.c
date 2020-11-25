@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 13:19:08 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/08/29 10:33:08 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:04:30 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_ceiling(char *str, t_all *all)
 		ft_error(32, "Error : Multiple ceiling inputs\n");
 	all->ceiling = 1;
 	while (*str == ' ')
-		str++;	
+		str++;
 	all->draw->ceil_r = ft_atoifc(str);
 	while ((*str >= '0' && *str <= '9') || *str == ' ')
 		str++;

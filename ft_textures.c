@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:55:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/10/13 15:35:59 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 16:16:10 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	texture_check(int c, t_all *all)
 		texture_checkcont(all, c);
 }
 
-void    start_texture(t_all *all, char *str, int c)
+void	start_texture(t_all *all, char *str, int c)
 {
 	int fd;
 
@@ -119,7 +119,6 @@ void	txt_init(t_text *text, t_data *data)
 	text->txt4_p, &(text->text4_width), &(text->text4_height));
 	text->textspr = mlx_xpm_file_to_image(data->mlx_ptr,
 	text->txtspr_p, &(text->textspr_width), &(text->textspr_height));
-
 	text->text1_data = (int *)mlx_get_data_addr(text->text1,
 	&text->text1_b, &text->text1_sizel, &text->text1_endi);
 	text->text2_data = (int *)mlx_get_data_addr(text->text2,
