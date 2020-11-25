@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/25 16:08:37 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 17:05:09 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,9 @@ char	**sort_parameters(char **gnl, t_all *all)
 	return (gnl);
 }
 
-char	**copy_lines(char **gnl, int fd)
+char	**copy_lines(char **gnl, char **tmp, int fd)
 {
 	char	*ptr;
-	char	**tmp;
 	int		i;
 	int		j;
 	int		result;
@@ -77,20 +76,17 @@ char	**copy_lines(char **gnl, int fd)
 		tmp = gnl;
 		gnl = malloc(sizeof(char *) * (i + 1));
 		if (tmp)
-		{
 			while (tmp[j])
 			{
 				gnl[j] = tmp[j];
 				j++;
 			}
-		}
 		free(tmp);
 		gnl[j++] = ptr;
 		gnl[j] = 0;
 		i++;
 	}
 	return (gnl);
-	// 28 line;
 }
 
 void	init_params(t_all *all)
@@ -115,11 +111,12 @@ int		start_parse(t_all *all, char *cub)
 {
 	int		fd;
 	char	**map;
+	char	**tmp;
 
 	if ((fd = open(cub, O_RDONLY)) < 0)
 		ft_error(32, "Error : couldnt open file (FD)\n");
 	all->map->gnl = 0;
-	all->map->gnl = copy_lines(all->map->gnl, fd);
+	all->map->gnl = copy_lines(all->map->gnl, tmp, fd);
 	close(fd);
 	init_params(all);
 	map = sort_parameters(all->map->gnl, all);

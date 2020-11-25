@@ -6,13 +6,13 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:39:35 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/25 15:39:40 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 17:04:53 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	print_game(t_all *all)
+int		print_game(t_all *all)
 {
 	raycast(all);
 	make_sprite(all);
@@ -21,7 +21,7 @@ int	print_game(t_all *all)
 	return (0);
 }
 
-int	start_window(t_all *all, int bmp, char **av)
+int		start_window(t_all *all, int bmp, char **av)
 {
 	start_parse(all, av[1]);
 	if ((all->data->mlx_ptr = mlx_init()) == NULL)
@@ -49,28 +49,32 @@ int	start_window(t_all *all, int bmp, char **av)
 	return (1);
 }
 
-int	main(int ac, char **av)
+void	start_param(t_all *all, int bmp, char **av)
 {
+	t_text	text;
+	t_draw	draw;
+
+	all->text = &text;
+	all->draw = &draw;
+	start_window(all, bmp, av);
+}
+
+int		main(int ac, char **av)
+{
+	t_all		all;
 	t_pos		pos;
 	t_map		map;
 	t_data		data;
 	t_ray		ray;
-	t_draw		draw;
-	t_all		all;
-	t_text		text;
 
-	//seven variable needs to be five
-
-	all.text = &text;
-	all.data = &data;
 	all.pos = &pos;
 	all.map = &map;
+	all.data = &data;
 	all.ray = &ray;
-	all.draw = &draw;
 	if (ac == 3 && ft_checkcub(av[1], "cub") && ft_checksave(av[2], "--save"))
-		start_window(&all, 1, av);
+		start_param(&all, 1, av);
 	else if (ac == 2 && ft_checkcub(av[1], "cub"))
-		start_window(&all, 0, av);
+		start_param(&all, 0, av);
 	else
 		write(2, "Error : Invalid arguments\n", 26);
 	return (0);
