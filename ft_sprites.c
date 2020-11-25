@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 14:49:46 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/25 17:19:49 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 17:29:19 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	draw_sprites(t_all *all, t_sprite *sprite, t_text *text)
 		all->textx = (int)((stripe - (-sprite->spr_w / 2 +
 		sprite->sprscreen_x)) * text->textspr_width / sprite->spr_w);
 		y = sprite->draws_y;
-		if (sprite->trans_y > 0 && stripe >= 0 && stripe < 
+		if (sprite->trans_y > 0 && stripe >= 0 && stripe <
 		all->pos->width && sprite->trans_y < (float)all->ray->zbuffer[stripe])
 			while (y < sprite->drawe_y)
 			{

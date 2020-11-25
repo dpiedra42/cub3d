@@ -6,19 +6,19 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:59:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/25 16:35:26 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/11/25 17:29:47 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int			ft_error(int len, char *str)
+int	ft_error(int len, char *str)
 {
 	write(2, str, len);
 	return (-1);
 }
 
-int			get_dist(t_all *all, int i)
+int	get_dist(t_all *all, int i)
 {
 	int distance;
 
@@ -43,7 +43,7 @@ int	numlen(const char *str)
 	return (i);
 }
 
-int			ft_atoifc(const char *str)
+int	ft_atoifc(const char *str)
 {
 	long int	num;
 
@@ -64,7 +64,7 @@ int			ft_atoifc(const char *str)
 	return ((int)num);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long int	num;
 
