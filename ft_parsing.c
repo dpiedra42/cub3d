@@ -6,7 +6,7 @@
 /*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/25 17:05:09 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/12/02 14:58:21 by deannapiedr      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int		start_parse(t_all *all, char *cub)
 	if ((fd = open(cub, O_RDONLY)) < 0)
 		ft_error(32, "Error : couldnt open file (FD)\n");
 	all->map->gnl = 0;
+	tmp = 0;
 	all->map->gnl = copy_lines(all->map->gnl, tmp, fd);
 	close(fd);
 	init_params(all);

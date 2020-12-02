@@ -2,9 +2,7 @@ NAME		=	cub3D.a
 
 RM			=	rm -f
 
-# CFLAGS		=	-Wall -Wextra -Werror
-
-CFLAGS      = ""
+CFLAGS		=	-Wall -Wextra -Werror
 
 GCC			=	gcc
 
