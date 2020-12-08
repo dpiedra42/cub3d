@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_textures.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
+/*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:55:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/25 16:16:10 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/12/08 15:35:16 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

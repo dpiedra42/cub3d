@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_sprite.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: deannapiedra <deannapiedra@student.42.f    +#+  +:+       +#+        */
+/*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:33:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/11/25 16:04:58 by deannapiedr      ###   ########.fr       */
+/*   Updated: 2020/12/08 15:34:21 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

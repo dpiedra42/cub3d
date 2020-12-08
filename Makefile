@@ -20,7 +20,8 @@ all		:	$(NAME)
 
 $(NAME)	:	$(OBJS)
 				$(MAKE) -C minilibx_og
-				gcc $(CFLAGS) -o $(NAME) $(OBJS) -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+				gcc $(CFLAGS) -o $(NAME) $(OBJS) -L$(MLX_DIR) -lmlx -Lmlx -lXext -lx11 -lm
+				#mac: -lmlx -framework OpenGL -framework AppKit
 
 .PHONY	:	clean fclean re
 
