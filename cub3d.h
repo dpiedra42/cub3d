@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/12/08 15:31:22 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/05 21:34:36 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 # define CUB3D_H
 
 # include <stdlib.h>
-# include <stdio.h>
+# include <errno.h>
 # include <string.h>
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
-# include "./minilibx_og/mlx.h"
+# include "./minilibx-linux/mlx.h"
 
-# define ESC 53
-# define W 13
-# define A 0
-# define S 1
-# define D 2
-# define UP 126
-# define DOWN 125
-# define LEFT 123
-# define RIGHT 124
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define LEFT 65361
+# define RIGHT 65363
 
 typedef struct	s_text
 {
@@ -189,6 +187,7 @@ typedef struct	s_all
 	int			sprtxt;
 	int			textx;
 	int			sprnum;
+	int			screenshot;
 }				t_all;
 
 void			start_param(t_all *all, int bmp, char **av);
@@ -253,6 +252,7 @@ int				ft_checkcub(char *av, char *str);
 int				ft_checksave(char *av, char *str);
 void			bmp_header(t_all *all, int fd);
 void			bmp_data(t_all *all, int fd);
+void			bmp_info(t_all *all, int fd);
 void			ft_makebitmap(t_all *all);
 
 #endif

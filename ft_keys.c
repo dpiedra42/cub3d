@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:49:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/12/08 15:34:00 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/06 17:53:27 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_close(t_all *all)
 		}
 		free(all->map->gnl);
 	}
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 
 void	ft_leftright(int b, t_pos *pos, t_map *map)

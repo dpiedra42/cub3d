@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:04:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/12/08 15:33:15 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/06 18:05:29 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	bmp_data(t_all *all, int fd)
 			write(fd, buffer, 4);
 			j++;
 			i++;
+
 		}
 		i -= 2 * all->pos->width;
 	}
@@ -61,7 +62,7 @@ void	bmp_header(t_all *all, int fd)
 	int offbit;
 
 	offbit = 54;
-	filesize = offbit + all->pos->width * all->pos->height * 4;
+	filesize = offbit + all->pos->width * all->pos->height * 4;     
 	write(fd, "BM", 2);
 	write(fd, &filesize, 4);
 	write(fd, "\0\0\0\0", 4);
@@ -72,8 +73,9 @@ void	ft_makebitmap(t_all *all)
 {
 	int fd;
 
+	all->screenshot = 1;
 	print_game(all);
-	if ((fd = open("bitmap.bmp", O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU)) < 0)
+	if ((fd = open("bitmap.bmp", O_CREAT | O_WRONLY | O_TRUNC | O_APPEND | 00777)) < 0)
 		ft_error(25, "Error: Can't make bitmap\n");
 	bmp_header(all, fd);
 	bmp_info(all, fd);
