@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:04:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/06 18:05:29 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/08 11:51:06 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,22 @@ void	bmp_header(t_all *all, int fd)
 	write(fd, &filesize, 4);
 	write(fd, "\0\0\0\0", 4);
 	write(fd, &offbit, 4);
+
+	// unsigned char    header[54];
+    // int                filesize;
+
+    // filesize = 54 + (w * 3 * h) + (padsize * h);
+    // ft_bzero(header, 54);
+    // header[0] = (unsigned char)('B');
+    // header[1] = (unsigned char)('M');
+    // int_to_char(header + 2, filesize);
+    // header[10] = (unsigned char)(54);
+    // header[14] = (unsigned char)(40);
+    // int_to_char(header + 18, w);
+    // int_to_char(header + 22, h);
+    // header[26] = (unsigned char)(1);
+    // header[28] = (unsigned char)(24);
+    // return (!(write(fd, header, 54) < 0));
 }
 
 void	ft_makebitmap(t_all *all)
