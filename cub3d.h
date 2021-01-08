@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/05 21:34:36 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/08 15:07:37 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include <errno.h>
 # include <string.h>
 # include <unistd.h>

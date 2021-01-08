@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:39:35 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/05 22:33:14 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/08 04:32:41 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		print_game(t_all *all)
 {
 	raycast(all);
 	make_sprite(all);
-	if (all->screenshot == 0)
+	if (!all->screenshot)
 		mlx_put_image_to_window(all->data->mlx_ptr, all->data->mlx_win,
 							all->data->img, 0, 0);
 	return (0);
@@ -52,8 +52,8 @@ int		start_window(t_all *all, int bmp, char **av)
 
 void	start_param(t_all *all, int bmp, char **av)
 {
-	t_text	text;
-	t_draw	draw;
+	t_text		text;
+	t_draw		draw;
 
 	all->text = &text;
 	all->draw = &draw;
