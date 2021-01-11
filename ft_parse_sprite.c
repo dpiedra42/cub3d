@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 17:33:33 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/12/08 15:34:21 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 17:24:51 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_spr	*fill_spr(t_all *all, t_spr *sprites)
 		y = 0;
 		while (y < all->map->max_x)
 		{
-			if (all->map->worldmap[x][y] == 2)
+			if (all->map->worldmap[x][y] == 4)
 			{
 				sprites[i].x = x;
 				sprites[i++].y = y;
@@ -50,7 +50,7 @@ int		count_sprites(t_map *map)
 		j = 0;
 		while (j < map->max_x)
 		{
-			if (map->worldmap[i][j] == 2)
+			if (map->worldmap[i][j] == 4)
 				spr++;
 			j++;
 		}

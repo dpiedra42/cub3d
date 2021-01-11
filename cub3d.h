@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/08 15:07:37 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 17:25:48 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,7 @@ typedef struct	s_all
 void			start_param(t_all *all, int bmp, char **av);
 int				start_window(t_all *all, int ac, char **av);
 int				start_parse(t_all *all, char *cub);
-int				ft_error(int len, char *str);
+int				ft_error(t_all *all, int len, char *str);
 char			**copy_lines(char **gnl, char **tmp, int fd);
 int				get_next_line(int fd, char **line);
 char			*del_line(char *s);
@@ -206,7 +206,7 @@ void			*ft_memmove(void *dst, const void *src, size_t len);
 void			init_params(t_all *all);
 char			**sort_parameters(char **gnl, t_all *all);
 int				ft_line(char c, char *str, t_all *all);
-void			check_error(char *str);
+void			check_error(t_all *all, char *str);
 void			ft_ceiling(char *str, t_all *all);
 void			ft_floor(char *str, t_all *all);
 void			ft_res(char *str, t_all *all);
@@ -214,6 +214,7 @@ int				numlen(const char *str);
 int				ft_atoi(const char *str);
 int				ft_atoifc(const char *str);
 void			ft_map(char **map, t_all *all);
+void			ft_checkmap(t_all *all, int i, int j);
 int				ft_findx(char **map);
 void			ft_startmap(t_all *all);
 void			ft_fillmap(char **map, t_all *all);

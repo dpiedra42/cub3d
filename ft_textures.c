@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 14:55:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/12/08 15:35:16 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 16:51:31 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	texture_checkcont(t_all *all, int c)
 	if (c == 4)
 	{
 		if (all->txt4)
-			ft_error(27, "Error: E texture set twice\n");
+			ft_error(all, 27, "Error: E texture set twice\n");
 		else
 			all->txt4 = 1;
 	}
 	if (c == 5)
 	{
 		if (all->sprtxt)
-			ft_error(29, "Error: SPR texture set twice\n");
+			ft_error(all, 29, "Error: SPR texture set twice\n");
 		else
 			all->sprtxt = 1;
 	}
@@ -35,21 +35,21 @@ void	texture_check(int c, t_all *all)
 	if (c == 1)
 	{
 		if (all->txt1)
-			ft_error(27, "Error: N texture set twice\n");
+			ft_error(all, 27, "Error: N texture set twice\n");
 		else
 			all->txt1 = 1;
 	}
 	if (c == 2)
 	{
 		if (all->txt2)
-			ft_error(28, "Error: SO texture set twice\n");
+			ft_error(all, 28, "Error: SO texture set twice\n");
 		else
 			all->txt2 = 1;
 	}
 	if (c == 3)
 	{
 		if (all->txt3)
-			ft_error(27, "Error: W texture set twice\n");
+			ft_error(all, 27, "Error: W texture set twice\n");
 		else
 			all->txt3 = 1;
 	}
@@ -64,7 +64,7 @@ void	start_texture(t_all *all, char *str, int c)
 	while (*str == ' ')
 		str++;
 	if ((fd = open(str, O_RDONLY)) < 0)
-		ft_error(27, "Error : wrong texture path\n");
+		ft_error(all, 27, "Error : wrong texture path\n");
 	close(fd);
 	if (c == 1)
 		all->text->txt1_p = str;

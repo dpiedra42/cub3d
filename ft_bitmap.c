@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:04:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/11 01:57:57 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 16:45:07 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_makebitmap(t_all *all)
 	print_game(all);
 	if ((fd = open("bitmap.bmp", O_WRONLY | O_CREAT, 0777
 		| O_APPEND | O_TRUNC)) < 0)
-		ft_error(25, "Error: Can't make bitmap\n");
+		ft_error(all, 25, "Error: Can't make bitmap\n");
 	bmp_header(all, fd);
 	bmp_info(all, fd);
 	bmp_data(all, fd);

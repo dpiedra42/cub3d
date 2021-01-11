@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/11 02:42:36 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 16:50:25 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_line(char c, char *str, t_all *all)
 	else if (c == '0' || c == '1' || c == '2')
 		return (0);
 	else if (c)
-		ft_error(29, "Error : Invalid line in file\n");
+		ft_error(all, 29, "Error : Invalid line in file\n");
 	return (1);
 }
 
@@ -56,7 +56,7 @@ char	**sort_parameters(char **gnl, t_all *all)
 		}
 		i++;
 	}
-	ft_error(21, "Error : no map found\n");
+	ft_error(all, 21, "Error : no map found\n");
 	return (gnl);
 }
 
@@ -116,7 +116,7 @@ int		start_parse(t_all *all, char *cub)
 	char	**tmp;
 
 	if ((fd = open(cub, O_RDONLY)) < 0)
-		ft_error(32, "Error : couldnt open file (FD)\n");
+		ft_error(all, 32, "Error : couldnt open file (FD)\n");
 	all->map->gnl = 0;
 	tmp = 0;
 	all->map->gnl = copy_lines(all->map->gnl, tmp, fd);

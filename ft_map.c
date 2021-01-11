@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 17:32:15 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/12/08 15:34:07 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 17:39:27 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	ft_map(char **map, t_all *all)
 		if (!map[i][j])
 			tmp = 1;
 		if (map[i][j] && tmp)
-			ft_error(24, "Error : too many inputs\n");
+			ft_error(all, 24, "Error : too many inputs\n");
 		i++;
 	}
 	all->map->max_y = i;
@@ -110,4 +110,5 @@ void	ft_map(char **map, t_all *all)
 	ft_startmap(all);
 	ft_fillmap(map, all);
 	ft_player(all);
+	ft_checkmap(all, all->pos->x, all->pos->y);
 }

@@ -6,15 +6,16 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 18:59:30 by deannapiedr       #+#    #+#             */
-/*   Updated: 2020/12/08 15:35:35 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 16:44:44 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_error(int len, char *str)
+int	ft_error(t_all *all, int len, char *str)
 {
 	write(2, str, len);
+	ft_close(all);
 	return (-1);
 }
 
