@@ -34,3 +34,4 @@ run		:	all
 
 # %.o		:	%.c
 # 			$(GCC) $(CFLAGS) $(INCLUDEH) -c $<  -o $(<:.c=.o)
+# valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes --log-file=valgrind-out.txt ./Cub3D map.cub

@@ -6,18 +6,17 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 18:04:13 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/09 23:38:00 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 01:57:57 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 
 void	bmp_data(t_all *all, int fd)
 {
-	int				i;
-	int				j;
-	int 	pixel;
+	int i;
+	int j;
+	int pixel;
 
 	i = all->pos->height - 1;
 	while (i >= 0)
@@ -62,7 +61,7 @@ void	bmp_header(t_all *all, int fd)
 	int offbit;
 
 	offbit = 58;
-	filesize = offbit + (all->pos->width * all->pos->height) * 4;     
+	filesize = offbit + (all->pos->width * all->pos->height) * 4;
 	write(fd, "BM", 2);
 	write(fd, &filesize, 4);
 	write(fd, "\0\0\0\0", 4);
@@ -75,7 +74,8 @@ void	ft_makebitmap(t_all *all)
 
 	all->screenshot = 1;
 	print_game(all);
-	if ((fd = open("bitmap.bmp", O_WRONLY | O_CREAT, 0777 | O_APPEND | O_TRUNC)) < 0)
+	if ((fd = open("bitmap.bmp", O_WRONLY | O_CREAT, 0777
+		| O_APPEND | O_TRUNC)) < 0)
 		ft_error(25, "Error: Can't make bitmap\n");
 	bmp_header(all, fd);
 	bmp_info(all, fd);
