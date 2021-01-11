@@ -30,7 +30,7 @@ re		:	fclean all
 
 
 run		:	all
-			./Cub3d map.cub
+			./Cub3D map.cub
 
 # %.o		:	%.c
 # 			$(GCC) $(CFLAGS) $(INCLUDEH) -c $<  -o $(<:.c=.o)

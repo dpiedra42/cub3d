@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 17:27:58 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/11 17:38:53 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 20:28:27 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,16 @@ void	ft_checkmap(t_all *all, int i, int j)
 	ft_checkmap(all, i, j + 1);
 	ft_checkmap(all, i - 1, j);
 	ft_checkmap(all, i, j - 1);
+}
+
+void	check_p(t_all *all)
+{
+	if (!(all->res))
+		ft_error(all, 27, "Error: No resolution input\n");
+	if (!(all->floor))
+		ft_error(all, 22, "Error: No floor input\n");
+	if (!(all->ceiling))
+		ft_error(all, 24, "Error: No ceiling input\n");
+	if (!all->txt1 || !all->txt2 || !all->txt3 || !all->txt4 || !all->sprtxt )
+		ft_error(all, 24, "Error: No texture input\n");
 }

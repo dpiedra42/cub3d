@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 17:03:44 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/11 17:25:48 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 20:17:59 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,6 +222,7 @@ void			txt_init(t_text *text, t_data *data);
 void			assign_text(t_text *text, t_ray *ray);
 void			start_texture(t_all *all, char *str, int c);
 void			texture_check(int c, t_all *all);
+void			check_p(t_all *all);
 void			texture_checkcont(t_all *all, int c);
 void			ft_player(t_all *all);
 int				start_player(int x, int y, char spawn, t_all *all);

@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/11 16:50:25 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 20:26:48 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int		start_parse(t_all *all, char *cub)
 	close(fd);
 	init_params(all);
 	map = sort_parameters(all->map->gnl, all);
+	check_p(all);
 	ft_map(map, all);
 	all->data->spr = start_sprites(all);
 	return (1);
