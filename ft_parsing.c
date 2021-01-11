@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/07 17:22:42 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/04 18:30:58 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 02:42:36 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void	init_params(t_all *all)
 	all->txt3 = 0;
 	all->txt4 = 0;
 	all->sprtxt = 0;
+	all->sprnum = 0;
+	all->screenshot = 0;
 	all->res = 0;
 	all->floor = 0;
 	all->ceiling = 0;

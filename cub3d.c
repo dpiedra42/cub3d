@@ -6,7 +6,7 @@
 /*   By: dpiedra <dpiedra@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:39:35 by deannapiedr       #+#    #+#             */
-/*   Updated: 2021/01/08 04:32:41 by dpiedra          ###   ########.fr       */
+/*   Updated: 2021/01/11 02:45:28 by dpiedra          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,26 @@ int		start_window(t_all *all, int bmp, char **av)
 
 void	start_param(t_all *all, int bmp, char **av)
 {
-	t_text		text;
+	t_data		data;
 	t_draw		draw;
 
-	all->text = &text;
+	data.mlx_ptr = NULL;
+	data.mlx_win = NULL;
+	data.img = NULL;
+	data.i_data = NULL;
+	data.sizel = 0;
+	data.b = 0;
+	data.endi = 0;
+	data.sprorder = NULL;
+	data.spr = NULL;
+	data.sprite = NULL;
+	draw.line_height = 0;
+	draw.start = 0;
+	draw.end = 0;
+	all->data = &data;
 	all->draw = &draw;
+	all->data->spr = NULL;
+	all->data->sprite = NULL;
 	start_window(all, bmp, av);
 }
 
@@ -65,12 +80,12 @@ int		main(int ac, char **av)
 	t_all		all;
 	t_pos		pos;
 	t_map		map;
-	t_data		data;
+	t_text		text;
 	t_ray		ray;
 
 	all.pos = &pos;
 	all.map = &map;
-	all.data = &data;
+	all.text = &text;
 	all.ray = &ray;
 	if (ac == 3 && ft_checkcub(av[1], "cub") && ft_checksave(av[2], "--save"))
 		start_param(&all, 1, av);
